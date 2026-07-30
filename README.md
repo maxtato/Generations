@@ -2,6 +2,8 @@
 
 Jeu de société mobile en un seul fichier (`index.html`), à jouer à plusieurs sur un seul téléphone.
 
+**Jouer en ligne : [generations-black.vercel.app](https://generations-black.vercel.app)**
+
 ## Principe
 
 Chaque carte est un objet ou un événement d'époque, rattaché à une des 5 générations
