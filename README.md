@@ -19,8 +19,23 @@ réussite de chacun sur son territoire et en terrain adverse.
 - 2 à 6 joueurs, manches illimitées, scores cumulés
 - Le plateau de joueurs est sauvegardé localement (localStorage)
 
+## Direction artistique
+
+Chaque génération a son fond de carte illustré, embarqué dans le HTML (WebP en
+base64) : Boomer psychédélique 70s, Gen X synthwave néon, Millennial Memphis
+pixel 90s, Gen Z chrome Y2K, Gen Alpha pastel 3D. La question, le chrono et les
+réponses se posent dans le panneau crème de l'illustration ; après la réponse,
+la bonne option remonte en tête et le verdict s'affiche par-dessus le bas du
+panneau — on touche la carte pour continuer.
+
+Les fichiers sources des fonds sont dans `img/` (768×1152 WebP). Pour changer
+la DA, remplacer ces fichiers puis ré-encoder en base64 dans `index.html`
+(variables `--pk-img`) ; la zone du panneau crème se règle par génération via
+la variable CSS `--panel` (insets haut/droite/bas/gauche).
+
 ## Lancer le jeu
 
-Ouvrir `index.html` dans un navigateur, idéalement sur mobile. Aucune dépendance,
-aucun serveur — les polices décoratives sont chargées depuis Google Fonts si le
-réseau est disponible, sinon le jeu fonctionne avec les polices système.
+Ouvrir `index.html` dans un navigateur, idéalement sur mobile. Fichier unique,
+aucune dépendance, aucun serveur — les polices décoratives sont chargées depuis
+Google Fonts si le réseau est disponible, sinon le jeu fonctionne avec les
+polices système.
