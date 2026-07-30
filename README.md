@@ -24,7 +24,7 @@ Chaque carte est un objet ou un événement d'époque, rattaché à une des 5 g�
 - **Territoire** (sa propre génération) : bonne réponse **+100**, erreur **−50** — tu es censé savoir.
 - **Adverse** (une autre génération) : bonne réponse **×2, ×3 ou ×4** selon l'écart générationnel, aucune pénalité en cas d'erreur.
 
-20 secondes par carte. À la fin de la manche, le tableau des scores détaille la
+20 secondes par carte en Classique, 15 en Expert. À la fin de la manche, le tableau des scores détaille la
 réussite de chacun sur son territoire et en terrain adverse.
 
 ## Contenu
@@ -38,6 +38,8 @@ réussite de chacun sur son territoire et en terrain adverse.
   marques, Mode & tendances, Événements vécus, Expressions & langage
 - Formats variés : QCM, Vrai/Faux, « Avant ou après ? » et « Quelle génération
   a été la première à… » (ces dernières font parler toute la table)
+- 2 à 6 joueurs, manches illimitées, scores cumulés
+- Le plateau de joueurs est sauvegardé localement (localStorage)
 
 ## Banque de questions
 
@@ -47,8 +49,6 @@ Les sources vivent dans `qbank/<theme>.json` (un fichier par thème, plus
 longueurs, anecdote présente), dédoublonne globalement et régénère
 `questions.js`, le seul fichier que charge le jeu. Pour ajouter des questions :
 éditer ou ajouter un fichier de thème, relancer la fusion.
-- 2 à 6 joueurs, manches illimitées, scores cumulés
-- Le plateau de joueurs est sauvegardé localement (localStorage)
 
 ## Direction artistique
 
