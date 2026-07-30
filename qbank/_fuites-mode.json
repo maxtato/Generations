@@ -1,0 +1,134 @@
+[
+ {
+  "q": "Quelle coupe au bol portée par les Beatles a été copiée par tous les garçons ?",
+  "bonne": "La coupe champignon",
+  "options": [
+   "La coupe champignon",
+   "La banane",
+   "Le catogan",
+   "La brosse"
+  ],
+  "mot_revelateur": "coupe"
+ },
+ {
+  "q": "Quel tailleur en tweed avec veste bordée est associé à Coco Chanel ?",
+  "bonne": "Le tailleur Chanel",
+  "options": [
+   "Le tailleur Chanel",
+   "Le smoking Saint Laurent",
+   "Le trois-pièces Dior",
+   "La robe Balenciaga"
+  ],
+  "mot_revelateur": "tailleur,chanel"
+ },
+ {
+  "q": "Quelle veste à col officier portée par Mao a été copiée par la mode occidentale ?",
+  "bonne": "La veste col Mao",
+  "options": [
+   "La veste col Mao",
+   "Le blazer croisé",
+   "La redingote",
+   "Le gilet de costume"
+  ],
+  "mot_revelateur": "veste"
+ },
+ {
+  "q": "Quel vêtement en jean se portait par-dessus… un autre vêtement en jean ?",
+  "bonne": "La veste en jean",
+  "options": [
+   "La veste en jean",
+   "Le gilet en laine",
+   "Le bomber",
+   "Le cardigan"
+  ],
+  "mot_revelateur": "jean"
+ },
+ {
+  "q": "Quel bijou porté à une seule oreille faisait scandale chez les garçons ?",
+  "bonne": "La boucle d'oreille",
+  "options": [
+   "La boucle d'oreille",
+   "La chevalière",
+   "La gourmette",
+   "L'épingle à nourrice"
+  ],
+  "mot_revelateur": "oreille"
+ },
+ {
+  "q": "Quelle mèche de devant les garçons se faisaient-ils décolorer en blond ?",
+  "bonne": "La mèche décolorée",
+  "options": [
+   "La mèche décolorée",
+   "La raie au milieu",
+   "La coupe au bol",
+   "Le catogan"
+  ],
+  "mot_revelateur": "meche"
+ },
+ {
+  "q": "Quel vêtement chaud sans manches se portait par-dessus un sweat à capuche ?",
+  "bonne": "La doudoune sans manches",
+  "options": [
+   "La doudoune sans manches",
+   "Le boléro",
+   "Le châle",
+   "Le gilet en maille fine"
+  ],
+  "mot_revelateur": "manches"
+ },
+ {
+  "q": "Quelle marque française de vêtements pour filles avait pour slogan « Morgan de toi » ?",
+  "bonne": "Morgan",
+  "options": [
+   "Morgan",
+   "Pimkie",
+   "Jennyfer",
+   "Etam"
+  ],
+  "mot_revelateur": "morgan"
+ },
+ {
+  "q": "Quel pantalon de survêtement resserré à la cheville a remplacé le jogging large ?",
+  "bonne": "Le jogging slim",
+  "options": [
+   "Le jogging slim",
+   "Le pantalon patte d'eph",
+   "Le sarouel",
+   "Le pantalon de costume"
+  ],
+  "mot_revelateur": "jogging"
+ },
+ {
+  "q": "Qui a bousculé la presse mode en s’imposant au premier rang des défilés des années 2010 ?",
+  "bonne": "Les blogueuses mode",
+  "options": [
+   "Les blogueuses mode",
+   "Les couturières",
+   "Les mannequins de podium",
+   "Les vendeuses de boutique"
+  ],
+  "mot_revelateur": "mode"
+ },
+ {
+  "q": "Quelle association de sandales et de chaussettes est devenue un vrai look assumé ?",
+  "bonne": "Les claquettes-chaussettes",
+  "options": [
+   "Les claquettes-chaussettes",
+   "Les bottes-sandales",
+   "Les tongs-collants",
+   "Les mocassins-guêtres"
+  ],
+  "mot_revelateur": "chaussettes"
+ },
+ {
+  "q": "Quelle coiffure très plaquée en arrière, tirée en chignon serré, est un look TikTok ?",
+  "bonne": "Le chignon slicked back",
+  "options": [
+   "Le chignon slicked back",
+   "La coupe afro",
+   "Les couettes hautes",
+   "Le carré bouclé"
+  ],
+  "mot_revelateur": "chignon"
+ }
+]

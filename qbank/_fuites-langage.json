@@ -1,0 +1,68 @@
+[
+ {
+  "q": "Que signifie « laisse béton » ?",
+  "bonne": "Laisse tomber",
+  "options": [
+   "Laisse tomber",
+   "Apporte du béton",
+   "Reste bien ici",
+   "Va beaucoup plus vite"
+  ],
+  "mot_revelateur": "laisse"
+ },
+ {
+  "q": "Que veut dire l'exclamation « bonjour l'ambiance ! » ?",
+  "bonne": "L'ambiance est catastrophique",
+  "options": [
+   "L'ambiance est catastrophique",
+   "La fête est réussie",
+   "Il fait très beau",
+   "On arrive en retard"
+  ],
+  "mot_revelateur": "ambiance"
+ },
+ {
+  "q": "Que signifie « avoir du swag » ?",
+  "bonne": "Avoir du style, de l'allure",
+  "options": [
+   "Avoir du style, de l'allure",
+   "Être très timide",
+   "Être en colère",
+   "Être épuisé"
+  ],
+  "mot_revelateur": "avoir"
+ },
+ {
+  "q": "Que veut dire « ça passe crème » ?",
+  "bonne": "Ça passe tout seul",
+  "options": [
+   "Ça passe tout seul",
+   "C'est trop sucré",
+   "C'est beaucoup trop lent",
+   "C'est complètement raté"
+  ],
+  "mot_revelateur": "passe"
+ },
+ {
+  "q": "Que veut dire « GG » entre joueurs ?",
+  "bonne": "Bien joué",
+  "options": [
+   "Bien joué",
+   "Grosse galère",
+   "Génial et grand",
+   "Gros gain"
+  ],
+  "mot_revelateur": "joue"
+ },
+ {
+  "q": "Que veut dire l'emoji tête de mort envoyé après une blague ?",
+  "bonne": "Je suis mort de rire",
+  "options": [
+   "Je suis mort de rire",
+   "Je suis fâché",
+   "C'est dangereux",
+   "Bonne nuit"
+  ],
+  "mot_revelateur": "mort"
+ }
+]

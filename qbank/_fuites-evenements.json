@@ -1,0 +1,79 @@
+[
+ {
+  "q": "Quel petit objet les Français gardaient-ils en poche pour faire leurs courses début 2002 ?",
+  "bonne": "Un convertisseur franc-euro",
+  "options": [
+   "Un convertisseur franc-euro",
+   "Un carnet de chèques",
+   "Une calculette solaire",
+   "Un ticket de rationnement"
+  ],
+  "mot_revelateur": "franc"
+ },
+ {
+  "q": "Quel mouvement social a paralysé les transports français en décembre 1995 ?",
+  "bonne": "Une grande grève des transports",
+  "options": [
+   "Une grande grève des transports",
+   "Un blocage des lycées",
+   "Une grève des enseignants",
+   "Un blocus des routiers"
+  ],
+  "mot_revelateur": "transports"
+ },
+ {
+  "q": "Quelle union a officiellement disparu à la fin de l'année 1991 ?",
+  "bonne": "L'Union soviétique",
+  "options": [
+   "L'Union soviétique",
+   "La Yougoslavie",
+   "La Tchécoslovaquie",
+   "Le pacte de Varsovie"
+  ],
+  "mot_revelateur": "union"
+ },
+ {
+  "q": "Quel changement a touché tous les téléviseurs français en 2011 ?",
+  "bonne": "L'arrêt de la télé analogique",
+  "options": [
+   "L'arrêt de la télé analogique",
+   "La fin de la couleur",
+   "L'arrivée du câble",
+   "La fin de la publicité"
+  ],
+  "mot_revelateur": "tele"
+ },
+ {
+  "q": "Quel pays a accueilli la première Coupe du monde de football en Afrique ?",
+  "bonne": "L'Afrique du Sud",
+  "options": [
+   "L'Afrique du Sud",
+   "Le Maroc",
+   "L'Égypte",
+   "Le Nigeria"
+  ],
+  "mot_revelateur": "afrique"
+ },
+ {
+  "q": "Quel accord sur le climat a été signé à Paris en décembre 2015 ?",
+  "bonne": "L'accord de Paris",
+  "options": [
+   "L'accord de Paris",
+   "Le protocole de Kyoto",
+   "Le pacte de Rio",
+   "La charte de Copenhague"
+  ],
+  "mot_revelateur": "accord,paris"
+ },
+ {
+  "q": "Quel monument parisien a rouvert ses portes en décembre 2024 ?",
+  "bonne": "Notre-Dame de Paris",
+  "options": [
+   "Notre-Dame de Paris",
+   "Le Grand Palais",
+   "La Sainte-Chapelle",
+   "L'Hôtel de Ville"
+  ],
+  "mot_revelateur": "paris"
+ }
+]

@@ -1,0 +1,145 @@
+[
+ {
+  "q": "Quel héros français en collants verts défiait les Anglais avec une simple fronde ?",
+  "bonne": "Thierry la Fronde",
+  "options": [
+   "Thierry la Fronde",
+   "Robin des Bois",
+   "Le chevalier Bayard",
+   "Lagardère"
+  ],
+  "mot_revelateur": "fronde"
+ },
+ {
+  "q": "Quelle série britannique associait un gentleman au parapluie et une partenaire en cuir ?",
+  "bonne": "Chapeau melon et bottes de cuir",
+  "options": [
+   "Chapeau melon et bottes de cuir",
+   "Le Saint",
+   "Amicalement vôtre",
+   "Le Prisonnier"
+  ],
+  "mot_revelateur": "cuir"
+ },
+ {
+  "q": "Quel petit clown en noir et blanc vivait de courtes aventures presque muettes ?",
+  "bonne": "Kiri le clown",
+  "options": [
+   "Kiri le clown",
+   "Bonhomme",
+   "Pipo",
+   "Chapi Chapo"
+  ],
+  "mot_revelateur": "clown"
+ },
+ {
+  "q": "Quelle émission proposait chaque semaine une pièce de théâtre filmée en studio ?",
+  "bonne": "Au théâtre ce soir",
+  "options": [
+   "Au théâtre ce soir",
+   "Les Dossiers de l'écran",
+   "La Piste aux étoiles",
+   "Le Grand Échiquier"
+  ],
+  "mot_revelateur": "theatre"
+ },
+ {
+  "q": "Dans quel pays a été tourné le décor du Village, prison dorée du « Prisonnier » ?",
+  "bonne": "Au pays de Galles",
+  "options": [
+   "Au pays de Galles",
+   "En Écosse",
+   "En Cornouailles",
+   "En Irlande"
+  ],
+  "mot_revelateur": "pays"
+ },
+ {
+  "q": "Quel capitaine sillonnait l'espace à bord du Cyberlabe avec le robot Crag ?",
+  "bonne": "Capitaine Flam",
+  "options": [
+   "Capitaine Flam",
+   "Albator",
+   "Ulysse",
+   "Cobra"
+  ],
+  "mot_revelateur": "capitaine"
+ },
+ {
+  "q": "Quel jeu demandait aux candidats de deviner le prix exact d'un lave-linge ?",
+  "bonne": "Le Juste Prix",
+  "options": [
+   "Le Juste Prix",
+   "Tournez manège",
+   "La Roue de la fortune",
+   "Une famille en or"
+  ],
+  "mot_revelateur": "prix"
+ },
+ {
+  "q": "Quelle chanteuse tenait le rôle-titre du feuilleton « Hélène et les garçons » ?",
+  "bonne": "Hélène Rollès",
+  "options": [
+   "Hélène Rollès",
+   "Vanessa Paradis",
+   "Elsa",
+   "Ophélie Winter"
+  ],
+  "mot_revelateur": "helene"
+ },
+ {
+  "q": "Autour de quel objet se retrouvaient les collègues de la série « Caméra Café » ?",
+  "bonne": "La machine à café",
+  "options": [
+   "La machine à café",
+   "La photocopieuse",
+   "Le distributeur de sandwichs",
+   "L'ascenseur"
+  ],
+  "mot_revelateur": "cafe"
+ },
+ {
+  "q": "Quel programme de TF1 fait danser des célébrités avec des professionnels chaque semaine ?",
+  "bonne": "Danse avec les stars",
+  "options": [
+   "Danse avec les stars",
+   "Star Academy",
+   "Incroyable Talent",
+   "La Ferme Célébrités"
+  ],
+  "mot_revelateur": "danse"
+ },
+ {
+  "q": "Que cache le grand tatouage de Michael Scofield dans « Prison Break » ?",
+  "bonne": "Le plan de la prison",
+  "options": [
+   "Le plan de la prison",
+   "Une carte au trésor",
+   "Un code bancaire",
+   "Une adresse secrète"
+  ],
+  "mot_revelateur": "prison"
+ },
+ {
+  "q": "Dans « Demon Slayer », qu'est devenue Nezuko, la sœur de Tanjiro ?",
+  "bonne": "Un démon",
+  "options": [
+   "Un démon",
+   "Une pourfendeuse",
+   "Une prêtresse",
+   "Une esclave"
+  ],
+  "mot_revelateur": "demon"
+ },
+ {
+  "q": "Dans « Les Traîtres », que doivent faire les loyaux réunis autour de la table ?",
+  "bonne": "Démasquer les traîtres",
+  "options": [
+   "Démasquer les traîtres",
+   "Voler le magot",
+   "Résoudre un meurtre",
+   "Fuir le château"
+  ],
+  "mot_revelateur": "traitres"
+ }
+]

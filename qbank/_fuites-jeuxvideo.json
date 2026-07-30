@@ -1,0 +1,156 @@
+[
+ {
+  "q": "Quel jeu familial fait courir des pions en forme de chevaux jusqu'à leur écurie ?",
+  "bonne": "Les petits chevaux",
+  "options": [
+   "Les petits chevaux",
+   "Le jeu de l'oie",
+   "Le Monopoly",
+   "Le nain jaune"
+  ],
+  "mot_revelateur": "chevaux"
+ },
+ {
+  "q": "Quel jeu de bistrot consiste à lancer des palets dans la bouche d'une grenouille en fonte ?",
+  "bonne": "Le jeu de la grenouille",
+  "options": [
+   "Le jeu de la grenouille",
+   "Le jeu de quilles",
+   "Le billard hollandais",
+   "Le jeu de palets breton"
+  ],
+  "mot_revelateur": "grenouille"
+ },
+ {
+  "q": "Quel séisme a frappé l'industrie américaine du jeu vidéo en 1983 ?",
+  "bonne": "Le krach du jeu vidéo",
+  "options": [
+   "Le krach du jeu vidéo",
+   "La fin des arcades",
+   "L'interdiction des consoles",
+   "La faillite de Sega"
+  ],
+  "mot_revelateur": "video"
+ },
+ {
+  "q": "Quel lieu servait de terrain d'entraînement à Lara Croft dans Tomb Raider ?",
+  "bonne": "Le manoir Croft",
+  "options": [
+   "Le manoir Croft",
+   "Le musée de Londres",
+   "Le temple perdu",
+   "Le camp de base"
+  ],
+  "mot_revelateur": "croft"
+ },
+ {
+  "q": "Quelle console portable de Nintendo avait deux écrans et se jouait au stylet ?",
+  "bonne": "La Nintendo DS",
+  "options": [
+   "La Nintendo DS",
+   "La PSP",
+   "La Game Boy Advance",
+   "La Switch"
+  ],
+  "mot_revelateur": "nintendo"
+ },
+ {
+  "q": "Quel jeu mobile de Supercell fait s'affronter des équipes de trois « brawlers » ?",
+  "bonne": "Brawl Stars",
+  "options": [
+   "Brawl Stars",
+   "Clash Royale",
+   "Fortnite",
+   "Free Fire"
+  ],
+  "mot_revelateur": "brawl"
+ },
+ {
+  "q": "Quel mode de Brawl Stars demande de récolter des gemmes et de les garder jusqu'au décompte ?",
+  "bonne": "Razzia de gemmes",
+  "options": [
+   "Razzia de gemmes",
+   "Braquage",
+   "Survivant",
+   "Prime"
+  ],
+  "mot_revelateur": "gemmes"
+ },
+ {
+  "q": "Quel jeu Roblox consiste à adopter des animaux et à les faire éclore d'un œuf ?",
+  "bonne": "Adopt Me!",
+  "options": [
+   "Adopt Me!",
+   "Brookhaven",
+   "Blox Fruits",
+   "Jailbreak"
+  ],
+  "mot_revelateur": "adopt"
+ },
+ {
+  "q": "Quel jeu Roblox inspiré de One Piece fait manger des fruits pour gagner des pouvoirs ?",
+  "bonne": "Blox Fruits",
+  "options": [
+   "Blox Fruits",
+   "Adopt Me!",
+   "Brookhaven",
+   "Tower Defense"
+  ],
+  "mot_revelateur": "fruits"
+ },
+ {
+  "q": "Quel jeu mobile gratuit fait chuter des personnages sur des parcours d'obstacles, façon Fall Guys ?",
+  "bonne": "Stumble Guys",
+  "options": [
+   "Stumble Guys",
+   "Roblox",
+   "Brawl Stars",
+   "Human Fall Flat"
+  ],
+  "mot_revelateur": "guys"
+ },
+ {
+  "q": "Quel jeu Roblox de 2025 consiste à voler les créatures « brainrot » des autres joueurs ?",
+  "bonne": "Steal a Brainrot",
+  "options": [
+   "Steal a Brainrot",
+   "Grow a Garden",
+   "Adopt Me!",
+   "Brookhaven"
+  ],
+  "mot_revelateur": "brainrot"
+ },
+ {
+  "q": "Quelle phrase s'affiche quand on remporte une partie de Fortnite Battle Royale ?",
+  "bonne": "Victory Royale",
+  "options": [
+   "Victory Royale",
+   "Game Over",
+   "Perfect",
+   "Top Score"
+  ],
+  "mot_revelateur": "royale"
+ },
+ {
+  "q": "Quel jeu Roblox fait défendre une base contre des vagues de toilettes envahissantes ?",
+  "bonne": "Toilet Tower Defense",
+  "options": [
+   "Toilet Tower Defense",
+   "Tower Defense Simulator",
+   "Blox Fruits",
+   "Brookhaven"
+  ],
+  "mot_revelateur": "toilet"
+ },
+ {
+  "q": "Quelle console portable permet de jouer à ses jeux Steam en déplacement ?",
+  "bonne": "Le Steam Deck",
+  "options": [
+   "Le Steam Deck",
+   "La Switch Lite",
+   "La PS Vita",
+   "Le ROG Ally"
+  ],
+  "mot_revelateur": "steam"
+ }
+]
