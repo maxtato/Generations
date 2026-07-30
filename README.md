@@ -58,8 +58,14 @@ longueurs, anecdote présente), dédoublonne globalement et régénère
 ## Direction artistique
 
 L'interface (accueil, menus, écran de passage, scores) est habillée façon app premium :
-fond navy à motifs en filigrane, liserés et boutons or brillant, emblème « GÉNÉRATIONS »
-extrait du visuel de référence (`img/emblem.webp`).
+fond navy à motifs en filigrane et logo « GÉNÉRATIONS » (`img/logo.webp`, détouré
+du visuel de référence) sur l'écran d'accueil et au dos des cartes.
+
+Les boutons reprennent le liseré du logo : un contour en dégradé rose `#F1297A`
+→ bleu `#098FEF` → vert `#89DC21` peint sur la zone de bordure
+(`background-clip: border-box`) tandis que le fond navy occupe l'intérieur
+(`padding-box`). Les boutons secondaires prennent une teinte franche de cette
+palette, et les tuiles de sélection s'allument dans leur propre couleur.
 
 Chaque génération a son fond de carte illustré, embarqué dans le HTML (WebP en
 base64) : Boomer psychédélique 70s, Gen X synthwave néon, Millennial Memphis
