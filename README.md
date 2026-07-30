@@ -1,4 +1,4 @@
-# ARTEFACT — le quiz des générations
+# GÉNÉRATIONS — le jeu de questions intergénérationnel
 
 Jeu de société mobile en un seul fichier (`index.html`), à jouer à plusieurs sur un seul téléphone.
 
@@ -20,6 +20,10 @@ réussite de chacun sur son territoire et en terrain adverse.
 - Le plateau de joueurs est sauvegardé localement (localStorage)
 
 ## Direction artistique
+
+L'interface (accueil, menus, écran de passage, scores) est habillée façon app premium :
+fond navy à motifs en filigrane, liserés et boutons or brillant, emblème « GÉNÉRATIONS »
+extrait du visuel de référence (`img/emblem.webp`).
 
 Chaque génération a son fond de carte illustré, embarqué dans le HTML (WebP en
 base64) : Boomer psychédélique 70s, Gen X synthwave néon, Millennial Memphis
