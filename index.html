@@ -87,6 +87,10 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 #s-title .btn{margin-top:auto}
 .row2{display:flex;gap:7px}
 .row2 .btn{flex:1;margin-top:0}
+#s-title .btn+.btn{margin-top:7px}
+.menu{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.menu .btn{margin-top:10px}
+.mhint{font-size:10.5px;line-height:1.45;font-weight:600;opacity:.5;padding:0 4px}
 .motto{margin-top:9px;border:2px solid rgba(255,197,60,.35);border-radius:24px;padding:9px 12px;
   text-align:center;font-size:9.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
   color:rgba(255,197,60,.85)}
@@ -266,13 +270,25 @@ input::placeholder{color:var(--cream);opacity:.35}
   <div class="emblem" role="img" aria-label="Générations — le jeu de questions intergénérationnel"></div>
   <div class="fan" id="fan"></div>
   <p class="tag">Chaque carte est un objet d'époque. Sur ta génération, tu es <b>censé savoir</b> — et te tromper coûte cher. Sur celle des autres, chaque bonne réponse vaut double, triple, quadruple.</p>
-  <p class="legend">5 générations · 150 cartes · deux niveaux de difficulté<br>en ligne via QR code, ou à plusieurs sur un seul téléphone</p>
-  <button class="btn accent" id="bt-host"><b>Créer une partie</b></button>
-  <div class="row2">
-    <button class="btn ghost c-pink" id="bt-join"><b>Rejoindre</b></button>
-    <button class="btn ghost c-teal" data-go="setup"><b>Un seul téléphone</b></button>
-  </div>
+  <p class="legend">5 générations · plus de 2000 cartes · 10 thèmes<br>seul, à plusieurs sur un téléphone, ou en ligne via QR code</p>
+  <button class="btn accent" id="bt-solo"><b>Solo</b></button>
+  <button class="btn ghost c-pink" id="bt-multi"><b>Multijoueur</b></button>
   <div class="motto">✦ &nbsp;Jouez · Apprenez · Partagez&nbsp; ✦</div>
+</section>
+
+<section id="s-multi" class="screen">
+  <div class="rail"><b>Multijoueur</b><span>À plusieurs</span></div>
+  <div class="menu">
+    <button class="btn accent" id="bt-host"><b>Créer une partie</b></button>
+    <p class="mhint">Un QR code s'affiche : chacun le scanne avec son téléphone.</p>
+    <button class="btn ghost c-pink" id="bt-join"><b>Rejoindre une partie</b></button>
+    <p class="mhint">Tu as un code ou tu as scanné le QR code de l'hôte.</p>
+    <button class="btn ghost c-teal" data-go="setup"><b>Sur le même téléphone</b></button>
+    <p class="mhint">On se passe l'appareil, chacun son tour, 5 cartes chacun.</p>
+  </div>
+  <div class="stack">
+    <button class="btn ghost" data-go="title"><b>Retour</b></button>
+  </div>
 </section>
 
 <section id="s-ident" class="screen">
@@ -281,6 +297,10 @@ input::placeholder{color:var(--cream);opacity:.35}
   <div class="gens" id="ogens"></div>
   <input id="ocode" type="text" placeholder="Code de la partie" maxlength="5" autocomplete="off">
   <div class="stack">
+    <div class="diffrow" id="ident-diff">
+      <button class="diff-btn" type="button" data-d="normal">Classique<small>20 s par carte</small></button>
+      <button class="diff-btn" type="button" data-d="expert">Expert<small>plus pointu · 15 s</small></button>
+    </div>
     <button class="btn accent" id="ident-go"><b>Continuer</b></button>
     <button class="btn ghost" id="ident-back"><b>Retour</b></button>
   </div>
@@ -2697,6 +2717,8 @@ const $=s=>document.querySelector(s);
 let players=[],pick=null,round=0;
 let turn=0,qIdx=0,queue=[],used=new Set(),timer=null,left=0,locked=false;
 
+let solo=false;
+
 /* difficulté : 'normal' (d1, 20 s) ou 'expert' (d2, 15 s) */
 let diff='normal';
 try{if(localStorage.getItem('gens-diff')==='expert')diff='expert'}catch(e){}
@@ -2776,13 +2798,16 @@ function drawRoster(){
 drawRoster();
 
 /* ================= MANCHE ================= */
-$('#start').onclick=()=>{round++;turn=0;startTurn()};
+$('#start').onclick=()=>{solo=false;round++;turn=0;startTurn()};
 $('#again').onclick=()=>{
   if(net){if(net.role==='host')hostStartRound();return}
-  round++;turn=0;startTurn()
+  round++;turn=0;
+  if(solo){queue=buildQueue(players[0]);qIdx=0;show('quiz');render();return}
+  startTurn()
 };
 $('#reset').onclick=()=>{
   if(net){leaveNet();return}
+  if(solo){solo=false;players=[];round=0;used.clear();show('title');return}
   players=[];round=0;used.clear();saveRoster();drawRoster();show('setup')
 };
 
@@ -2880,6 +2905,7 @@ function advance(){
   if(!locked)return;
   qIdx++;
   if(qIdx<5){render();return}
+  if(solo){showScores();return}
   turn++;
   if(turn<players.length){startTurn()}else{showScores()}
 }
@@ -2924,6 +2950,7 @@ function showScores(){
   renderBoard(players,round);
   $('#again').style.display='';
   $('#score-wait').style.display='none';
+  $('#reset').querySelector('b').textContent=solo?'Quitter':'Nouvelle partie';
 }
 
 /* ================= MODE EN LIGNE =================
@@ -2967,8 +2994,9 @@ function syncOgens(){[...ogensEl.children].forEach((c,i)=>c.setAttribute('aria-p
 
 function openIdent(mode,code){
   identMode=mode;
-  $('#ident-ctx').textContent=mode==='host'?'Créer une partie':'Rejoindre';
+  $('#ident-ctx').textContent=mode==='host'?'Créer une partie':mode==='solo'?'Partie solo':'Rejoindre';
   $('#ocode').style.display=mode==='join'?'':'none';
+  $('#ident-diff').style.display=mode==='solo'?'':'none';
   $('#ocode').value=code||'';
   try{
     const me=JSON.parse(localStorage.getItem('gens-me')||'null');
@@ -2977,21 +3005,36 @@ function openIdent(mode,code){
   syncOgens();
   show('ident');
 }
+$('#bt-solo').onclick=()=>openIdent('solo');
+$('#bt-multi').onclick=()=>show('multi');
 $('#bt-host').onclick=()=>openIdent('host');
 $('#bt-join').onclick=()=>openIdent('join','');
-$('#ident-back').onclick=()=>{history.replaceState(null,'',location.pathname);show('title')};
+$('#ident-back').onclick=()=>{
+  history.replaceState(null,'',location.pathname);
+  show(identMode==='solo'?'title':'multi');
+};
 $('#ident-go').onclick=()=>{
   const name=$('#oname').value.trim();
   if(!name||!opick)return;
   try{localStorage.setItem('gens-me',JSON.stringify({name,gen:opick}))}catch(e){}
   const me={name,gen:opick};
-  if(identMode==='host'){hostGame(me)}
+  if(identMode==='solo'){startSolo(me)}
+  else if(identMode==='host'){hostGame(me)}
   else{
     const code=$('#ocode').value.trim().toUpperCase();
     if(code.length<4)return;
     joinGame(code,me);
   }
 };
+
+/* ---- partie solo : un seul joueur, pas d'écran de passage ---- */
+function startSolo(me){
+  net=null;solo=true;
+  players=[newPlayer(me.name,me.gen)];
+  round=1;turn=0;
+  queue=buildQueue(players[0]);qIdx=0;
+  show('quiz');render();
+}
 
 /* ---- salon ---- */
 function renderLobby(list){

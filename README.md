@@ -4,8 +4,10 @@ Jeu de société mobile en un seul fichier (`index.html`), à jouer à plusieurs
 
 **Jouer en ligne : [generations-black.vercel.app](https://generations-black.vercel.app)**
 
-## Deux façons de jouer
+## Trois façons de jouer
 
+- **Solo** : on entre son prénom et sa génération, on choisit son niveau, et
+  c'est parti pour 5 cartes. Les manches s'enchaînent et le score se cumule.
 - **À plusieurs téléphones (en ligne)** : l'hôte crée une partie, un QR code
   s'affiche ; chacun le scanne, entre son prénom et sa génération, et tout le
   monde reçoit les mêmes questions en même temps (10 par manche, 2 par
@@ -13,8 +15,11 @@ Jeu de société mobile en un seul fichier (`index.html`), à jouer à plusieurs
   après chaque question, puis l'hôte enchaîne. La connexion est directe entre
   téléphones (WebRTC via PeerJS, broker public gratuit) — aucun serveur à
   héberger.
-- **Sur un seul téléphone** : le mode d'origine, on se passe le téléphone,
-  chacun tire 5 cartes personnelles.
+- **Sur un seul téléphone** : on se passe l'appareil, chacun tire 5 cartes
+  personnelles à son tour.
+
+L'accueil propose **Solo** et **Multijoueur** ; le menu multijoueur regroupe
+« Créer une partie », « Rejoindre une partie » et « Sur le même téléphone ».
 
 ## Principe
 
@@ -38,7 +43,7 @@ réussite de chacun sur son territoire et en terrain adverse.
   marques, Mode & tendances, Événements vécus, Expressions & langage
 - Formats variés : QCM, Vrai/Faux, « Avant ou après ? » et « Quelle génération
   a été la première à… » (ces dernières font parler toute la table)
-- 2 à 6 joueurs, manches illimitées, scores cumulés
+- 1 à 6 joueurs, manches illimitées, scores cumulés
 - Le plateau de joueurs est sauvegardé localement (localStorage)
 
 ## Banque de questions
