@@ -39,9 +39,9 @@ réussite de chacun sur son territoire et en terrain adverse.
 
 ## Contenu
 
-- **2148 cartes**, chacune avec une anecdote « le savais-tu » révélée après la réponse
-- Deux niveaux de difficulté : **Classique** (~1500 cartes, 20 s par question) et
-  **Expert** (~650 cartes nettement plus pointues, 15 s) — choisi sur l'écran de
+- **2648 cartes**, chacune avec une anecdote « le savais-tu » révélée après la réponse
+- Deux niveaux de difficulté : **Classique** (~1850 cartes, 20 s par question) et
+  **Expert** (~800 cartes nettement plus pointues, 15 s) — choisi sur l'écran de
   préparation en solo, et par l'hôte dans le salon en ligne
 - Dix thèmes, affichés sur la carte à côté de l'année : Objets du quotidien,
   Télé & dessins animés, Musique, Cinéma, Jeux vidéo, Technologie, Pub &
@@ -55,10 +55,17 @@ réussite de chacun sur son territoire et en terrain adverse.
 
 Les sources vivent dans `qbank/<theme>.json` (un fichier par thème, plus
 `base.json` qui fige les cartes d'origine). Le script de fusion
-`merge-qbank.js` les valide (bonne réponse en tête, options distinctes,
+`qbank/merge-qbank.js` les valide (bonne réponse en tête, options distinctes,
 longueurs, anecdote présente), dédoublonne globalement et régénère
 `questions.js`, le seul fichier que charge le jeu. Pour ajouter des questions :
 éditer ou ajouter un fichier de thème, relancer la fusion.
+
+La fusion signale aussi les **fuites de réponse** : un énoncé qui contient un
+mot présent dans la bonne réponse et absent de toutes les autres options se
+devine sans rien savoir (« Quel petit objet indiquait combien de timbres
+coller sur une *lettre* ? » → « Le pèse-*lettre* »). Les questions à deux
+options sont exclues du contrôle, leurs réponses reprenant forcément les mots
+de l'énoncé.
 
 ## Direction artistique
 
