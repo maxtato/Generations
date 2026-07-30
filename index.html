@@ -158,8 +158,10 @@ input::placeholder{color:var(--cream);opacity:.35}
 /* ============ LA CARTE ============ */
 /* le fond de carte est une illustration par génération (img/*.webp) ;
    le contenu vient se poser dans son panneau crème via --panel */
-.stage{flex:1;display:flex;align-items:center;justify-content:center;perspective:1400px;min-height:0;padding:4px 0 10px}
-.deck{position:relative;width:min(100%,calc((100dvh - 175px)*.6667))}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;perspective:1400px;min-height:0;padding:2px 0 6px}
+.deck{position:relative;width:min(100%,calc((100dvh - 240px)*.6667))}
+.next-btn{width:auto;min-width:58%;margin:0 auto;padding:12px 24px;font-size:13px;border-radius:13px;flex:0 0 auto}
+.next-btn.hid{visibility:hidden}
 .deck::before,.deck::after{content:'';position:absolute;inset:0;border:2px solid rgba(0,0,0,.5);
   border-radius:var(--r);background:var(--pk-back);z-index:0}
 .deck::before{transform:rotate(-2.6deg) translate(-4px,4px)}
@@ -213,6 +215,7 @@ input::placeholder{color:var(--cream);opacity:.35}
 .vres{font-size:2.5cqw;font-weight:700;line-height:1.55;opacity:.9;border-top:1px dashed rgba(246,236,215,.35);padding-top:1.4cqw}
 .vres:empty{display:none}
 .tap{font-size:2.3cqw;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:.75;text-align:right}
+.tap:empty{display:none}
 
 /* ============ SCORES ============ */
 /* tableau aux couleurs de l'appli : panneaux navy, jaune du logo,
@@ -344,6 +347,7 @@ input::placeholder{color:var(--cream);opacity:.35}
       </article>
     </div>
   </div>
+  <button class="btn accent next-btn hid" id="next-btn"><b>Suivant</b></button>
 </section>
 
 <section id="s-score" class="screen">
@@ -2995,7 +2999,8 @@ function render(){
     opts.appendChild(b);
   });
   $('#vres').textContent='';
-  $('#vtap').textContent='Touche la carte pour continuer';
+  $('#vtap').textContent='';
+  $('#next-btn').classList.add('hid');
   $('#verdict').classList.add('hide');
 
   const secs=diffSecs();
@@ -3034,17 +3039,19 @@ function answer(ok,btn,order,q,m,home){
   $('#msg').textContent=msg;
   $('#vfact').textContent=q.f||'';
   $('#verdict').classList.remove('hide');
+  $('#next-btn').classList.remove('hid');
 }
 
-/* toute la carte sert de bouton « suivant » une fois la réponse révélée */
-$('#card').onclick=()=>{
+/* bouton « Suivant » sous la carte, visible une fois la réponse révélée */
+function advance(){
   if(net){if(net.role==='host'&&net.phase==='r')hostNextQ();return}
   if(!locked)return;
   qIdx++;
   if(qIdx<5){render();return}
   turn++;
   if(turn<players.length){startTurn()}else{showScores()}
-};
+}
+$('#next-btn').onclick=advance;
 
 /* ================= SCORES ================= */
 function renderBoard(list,roundNo){
@@ -3341,6 +3348,7 @@ function netShowQuestion(m,onPick){
   });
   $('#verdict').classList.add('hide');
   $('#vres').textContent='';
+  $('#next-btn').classList.add('hid');
   let left=m.secs;$('#tbar').style.width='100%';
   netTimer=setInterval(()=>{
     left--;$('#tbar').style.width=Math.max(0,left/m.secs*100)+'%';
@@ -3376,8 +3384,9 @@ function netShowReveal(m){
   $('#msg').textContent=mine&&mine.ok?'Bien joué !':(net.mySel<0?'Trop tard.':'Raté.');
   $('#vfact').textContent=m.f||'';
   $('#vres').textContent=m.res.map(r=>(r.ok?'✓':'✗')+' '+r.name+' '+(r.pts>0?'+':'')+r.pts).join('   ');
-  $('#vtap').textContent=net.role==='host'?'Touche la carte pour continuer':'Prochaine question dans un instant…';
+  $('#vtap').textContent=net.role==='host'?'':'Prochaine question dans un instant…';
   $('#verdict').classList.remove('hide');
+  if(net.role==='host')$('#next-btn').classList.remove('hid');
   if(navigator.vibrate)navigator.vibrate(mine&&mine.ok?25:[55,45,55]);
 }
 function netShowScores(list,roundNo){
