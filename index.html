@@ -67,9 +67,9 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
   transition:opacity .1s}
 .btn b{font-weight:800;color:var(--bc)}
 .btn:active{opacity:.72}
-.btn.accent{font-size:16px;padding:15px 14px;border-radius:16px;--bc:#14213A;
+.btn.accent{--bc:#14213A;
   background:linear-gradient(180deg,#FFD75E,#F4C715 55%,#E4A709) padding-box,var(--edge) border-box}
-.btn.accent::before,.btn.accent::after{content:'✦';font-size:14px;color:#14213A;opacity:.8}
+.btn.accent::before,.btn.accent::after{content:'✦';font-size:12px;color:#14213A;opacity:.8}
 /* variantes : le liseré prend une teinte franche du logo au lieu du dégradé */
 .btn.c-pink{background:linear-gradient(180deg,#152A45,#0D1C31) padding-box,linear-gradient(#F1297A,#F1297A) border-box;--bc:#FF6FA6}
 .btn.c-teal{background:linear-gradient(180deg,#152A45,#0D1C31) padding-box,linear-gradient(#89DC21,#89DC21) border-box;--bc:#9CE843}
@@ -170,7 +170,7 @@ input::placeholder{color:var(--cream);opacity:.35}
    le contenu vient se poser dans son panneau crème via --panel */
 .stage{flex:1;display:flex;align-items:center;justify-content:center;perspective:1400px;min-height:0;padding:2px 0 6px}
 .deck{position:relative;width:min(100%,calc((100dvh - 240px)*.6667))}
-.next-btn{width:auto;min-width:58%;margin:0 auto;padding:12px 24px;font-size:13px;border-radius:13px;flex:0 0 auto}
+.next-btn{width:auto;min-width:58%;margin:0 auto;padding:12px 24px;flex:0 0 auto}
 .next-btn.hid{visibility:hidden}
 .deck::before,.deck::after{content:'';position:absolute;inset:0;border:2px solid rgba(0,0,0,.5);
   border-radius:var(--r);background:var(--pk-back);z-index:0}
