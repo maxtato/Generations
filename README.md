@@ -64,9 +64,11 @@ extrait du visuel de référence (`img/emblem.webp`).
 Chaque génération a son fond de carte illustré, embarqué dans le HTML (WebP en
 base64) : Boomer psychédélique 70s, Gen X synthwave néon, Millennial Memphis
 pixel 90s, Gen Z chrome Y2K, Gen Alpha pastel 3D. La question, le chrono et les
-réponses se posent dans le panneau crème de l'illustration ; après la réponse,
-la bonne option remonte en tête et le verdict s'affiche par-dessus le bas du
-panneau — on touche la carte pour continuer.
+réponses se posent dans le panneau crème de l'illustration. Après la réponse,
+les options restent **exactement à leur place** (la bonne s'allume là où elle
+est, celle qu'on a choisie à tort est barrée) et le verdict vient occuper
+l'espace de la question, déjà lue — un bouton « Suivant » sous la carte
+enchaîne.
 
 Les fichiers sources des fonds sont dans `img/` (768×1152 WebP). Pour changer
 la DA, remplacer ces fichiers puis ré-encoder en base64 dans `index.html`

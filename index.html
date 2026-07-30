@@ -203,16 +203,16 @@ input::placeholder{color:var(--cream);opacity:.35}
 .opt.good{background:var(--pk-acc);color:#FFF9EC;border-color:var(--pk-ink)}
 .opt.bad{opacity:.36;text-decoration:line-through;box-shadow:none;transform:translateY(3px)}
 .opts.locked .opt{pointer-events:none}
-.opt.good{order:-1}
 .opt.sel{box-shadow:inset 0 0 0 2px var(--pk-ink);background:rgba(255,255,255,.85)}
-/* le verdict : panneau surélevé aux couleurs de l'appli, bien opaque,
-   qui se détache de la carte ; la bonne réponse remonte en tête (order) */
-.verdict{position:absolute;left:-1.5cqw;right:-1.5cqw;bottom:-1.5cqw;z-index:2;
+/* le verdict : panneau opaque aux couleurs de l'appli, qui prend la place de
+   la question (déjà lue) — les réponses restent visibles et dans leur ordre */
+.verdict{position:relative;z-index:2;flex:0 0 auto;overflow:hidden;
   background:linear-gradient(180deg,#152A45,#0B1930 75%);color:var(--cream);
   border:2px solid var(--gold);border-radius:12px;
-  padding:3cqw 3.4cqw;
-  box-shadow:0 -8px 20px rgba(0,0,0,.45),0 12px 28px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.1);
-  display:flex;flex-direction:column;gap:1.5cqw;animation:pop .22s ease}
+  padding:2.8cqw 3.2cqw;
+  box-shadow:0 6px 18px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1);
+  display:flex;flex-direction:column;gap:1.4cqw;animation:pop .22s ease}
+.panel.revealed .q{display:none}
 @keyframes pop{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
 .verdict.hide{display:none}
 .vrow{display:flex;gap:2.8cqw;align-items:center}
@@ -361,13 +361,13 @@ input::placeholder{color:var(--cream);opacity:.35}
         <div class="panel">
           <div class="meta"><span class="chip" id="year"></span><div class="timer"><i id="tbar"></i></div><span class="chip cost" id="cost"></span></div>
           <p class="q" id="q"></p>
-          <div class="opts" id="opts"></div>
           <div class="verdict hide" id="verdict" aria-live="polite">
             <div class="vrow"><span class="pts" id="pts"></span><span class="msg" id="msg"></span></div>
             <div class="vfact" id="vfact"></div>
             <div class="vres" id="vres"></div>
             <div class="tap" id="vtap">Touche la carte pour continuer</div>
           </div>
+          <div class="opts" id="opts"></div>
         </div>
       </article>
     </div>
@@ -2864,6 +2864,7 @@ function render(){
   $('#vtap').textContent='';
   $('#next-btn').classList.add('hid');
   $('#verdict').classList.add('hide');
+  document.querySelector('.panel').classList.remove('revealed');
 
   const secs=diffSecs();
   left=secs;$('#tbar').style.width='100%';
@@ -2901,6 +2902,7 @@ function answer(ok,btn,order,q,m,home){
   $('#msg').textContent=msg;
   $('#vfact').textContent=q.f||'';
   $('#verdict').classList.remove('hide');
+  document.querySelector('.panel').classList.add('revealed');
   $('#next-btn').classList.remove('hid');
 }
 
@@ -3227,6 +3229,7 @@ function netShowQuestion(m,onPick){
     opts.appendChild(b);
   });
   $('#verdict').classList.add('hide');
+  document.querySelector('.panel').classList.remove('revealed');
   $('#vres').textContent='';
   $('#next-btn').classList.add('hid');
   let left=m.secs;$('#tbar').style.width='100%';
@@ -3246,6 +3249,7 @@ function netPick(k){
   $('#vfact').textContent='';$('#vres').textContent='';
   $('#vtap').textContent='';
   $('#verdict').classList.remove('hide');
+  document.querySelector('.panel').classList.add('revealed');
   net.onPick(k);
 }
 function netShowReveal(m){
@@ -3266,6 +3270,7 @@ function netShowReveal(m){
   $('#vres').textContent=m.res.map(r=>(r.ok?'✓':'✗')+' '+r.name+' '+(r.pts>0?'+':'')+r.pts).join('   ');
   $('#vtap').textContent=net.role==='host'?'':'Prochaine question dans un instant…';
   $('#verdict').classList.remove('hide');
+  document.querySelector('.panel').classList.add('revealed');
   if(net.role==='host')$('#next-btn').classList.remove('hid');
   if(navigator.vibrate)navigator.vibrate(mine&&mine.ok?25:[55,45,55]);
 }
