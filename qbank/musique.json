@@ -130,7 +130,7 @@
 "g": "BOOMER",
 "y": "1971",
 "d": 1,
-"q": "Quelle chanson de John Lennon commence par « Imagine there's no heaven » ?",
+"q": "Quelle chanson de John Lennon rêve d'un monde sans paradis, sans pays et sans guerre ?",
 "o": [
 "Imagine",
 "Woman",
@@ -422,7 +422,7 @@
 "g": "BOOMER",
 "y": "1962",
 "d": 2,
-"q": "Quel label américain de Detroit a lancé la soul de Motown ?",
+"q": "Quel label de Detroit a fait connaître Diana Ross, Marvin Gaye et les Jackson 5 ?",
 "o": [
 "Motown",
 "Stax",
@@ -646,7 +646,7 @@
 "g": "X",
 "y": "1985",
 "d": 1,
-"q": "Quel titre de Jean-Jacques Goldman commence par « Je marche seul » ?",
+"q": "Quel titre de Jean-Jacques Goldman évoque l'errance nocturne, sans personne à ses côtés ?",
 "o": [
 "Je marche seul",
 "Envole-moi",
@@ -1148,7 +1148,7 @@
 "g": "Y",
 "y": "1997",
 "d": 1,
-"q": "Quel boys band américain chantait « Everybody (Backstreet's Back) » ?",
+"q": "Quel groupe américain de cinq garçons chantait « I Want It That Way » ?",
 "o": [
 "Backstreet Boys",
 "NSYNC",
@@ -2110,7 +2110,7 @@
 "g": "Z",
 "y": "2014",
 "d": 2,
-"q": "Quelle artiste française chantait « Christine » avec une chorégraphie très identifiable ?",
+"q": "Quelle artiste française chantait « Saint Claude » avec une chorégraphie très identifiable ?",
 "o": [
 "Christine and the Queens",
 "Jain",
@@ -2784,5 +2784,705 @@
 "Itzy"
 ],
 "f": "Leur style rétro tranche avec les productions très chargées de la K-pop."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1956",
+"d": 1,
+"q": "Qui chantait « Love Me Tender » en faisant hurler les adolescentes ?",
+"o": [
+"Elvis Presley",
+"Buddy Holly",
+"Roy Orbison",
+"Ricky Nelson"
+],
+"f": "Le titre reprend la mélodie d'une ballade américaine du XIXe siècle."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1959",
+"d": 1,
+"q": "Qui chantait « La Mer », reprise dans le monde entier sous le titre « Beyond the Sea » ?",
+"o": [
+"Charles Trenet",
+"Yves Montand",
+"Tino Rossi",
+"Maurice Chevalier"
+],
+"f": "La légende raconte qu'il en a écrit le texte dans un train, face à la Méditerranée."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1960",
+"d": 1,
+"q": "Qui chantait « Non, je ne regrette rien » ?",
+"o": [
+"Édith Piaf",
+"Barbara",
+"Juliette Gréco",
+"Line Renaud"
+],
+"f": "Les légionnaires français en ont fait l'un de leurs chants de marche."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1965",
+"d": 1,
+"q": "Quel duo américain chantait « The Sound of Silence » ?",
+"o": [
+"Simon & Garfunkel",
+"The Byrds",
+"The Everly Brothers",
+"Peter, Paul and Mary"
+],
+"f": "Le titre a d'abord été un échec, avant qu'une version électrique ne le relance."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1964",
+"d": 1,
+"q": "Qui chantait « La plus belle pour aller danser » ?",
+"o": [
+"Sylvie Vartan",
+"Françoise Hardy",
+"Sheila",
+"Petula Clark"
+],
+"f": "Le titre figure dans le film « Cherchez l'idole », sorti en 1964."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1970",
+"d": 1,
+"q": "Quelle chanteuse à la voix grave chantait « L'Aigle noir » ?",
+"o": [
+"Barbara",
+"Dalida",
+"Juliette Gréco",
+"Marie Laforêt"
+],
+"f": "Elle s'accompagnait au piano et écrivait elle-même tous ses textes."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1966",
+"d": 1,
+"q": "Quel groupe américain chantait « California Dreamin' » ?",
+"o": [
+"The Mamas & the Papas",
+"The Beach Boys",
+"The Byrds",
+"The Turtles"
+],
+"f": "Le titre a été écrit à New York, un hiver, en rêvant du soleil californien."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1964",
+"d": 2,
+"q": "Qui chantait « Nathalie », qui évoque une guide sur la place Rouge ?",
+"o": [
+"Gilbert Bécaud",
+"Charles Aznavour",
+"Serge Reggiani",
+"Yves Montand"
+],
+"f": "Bécaud était surnommé « Monsieur 100 000 volts » pour son énergie sur scène."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1967",
+"d": 2,
+"q": "Quel groupe de San Francisco emmené par Grace Slick chantait « White Rabbit » ?",
+"o": [
+"Jefferson Airplane",
+"The Doors",
+"The Grateful Dead",
+"Creedence Clearwater Revival"
+],
+"f": "Grace Slick s'est inspirée d'« Alice au pays des merveilles » et du Boléro de Ravel."
+},
+{
+"t": "musique",
+"g": "BOOMER",
+"y": "1971",
+"d": 2,
+"q": "Quelle chanteuse américaine à la voix éraillée chantait « Me and Bobby McGee » ?",
+"o": [
+"Janis Joplin",
+"Aretha Franklin",
+"Tina Turner",
+"Nina Simone"
+],
+"f": "Elle fait partie du « club des 27 », comme Jimi Hendrix et Jim Morrison."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1982",
+"d": 1,
+"q": "Quel groupe américain chantait « Eye of the Tiger », hymne d'un boxeur de cinéma ?",
+"o": [
+"Survivor",
+"Journey",
+"Foreigner",
+"Toto"
+],
+"f": "Le morceau a été commandé pour le troisième volet de la saga « Rocky »."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1983",
+"d": 1,
+"q": "Quel groupe britannique chantait « Karma Chameleon » ?",
+"o": [
+"Culture Club",
+"Duran Duran",
+"Spandau Ballet",
+"Tears for Fears"
+],
+"f": "Le maquillage de Boy George faisait scandale sur les plateaux télé de l'époque."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1985",
+"d": 1,
+"q": "Qui chantait « Elle a les yeux revolver » ?",
+"o": [
+"Marc Lavoine",
+"Jean-Luc Lahaye",
+"Herbert Léonard",
+"Patrick Bruel"
+],
+"f": "Le titre l'a révélé au grand public au milieu des années 80."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1986",
+"d": 1,
+"q": "Qui chantait « Ouragan », enregistré aussi en anglais sous le titre « Irresistible » ?",
+"o": [
+"Stéphanie de Monaco",
+"Vanessa Paradis",
+"Elsa",
+"Jeanne Mas"
+],
+"f": "La princesse de Monaco s'est lancée dans la chanson le temps d'un album."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1984",
+"d": 1,
+"q": "Quel duo français chantait « Besoin de rien, envie de toi » ?",
+"o": [
+"Peter et Sloane",
+"Émile et Images",
+"Début de Soirée",
+"Les Avions"
+],
+"f": "Le titre a été l'un des plus gros succès de l'été 1984 en France."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1984",
+"d": 1,
+"q": "Quel chanteur américain chantait « Born in the U.S.A. » ?",
+"o": [
+"Bruce Springsteen",
+"Bob Seger",
+"John Mellencamp",
+"Tom Petty"
+],
+"f": "Beaucoup y ont entendu un hymne patriotique alors que le texte est très amer."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1982",
+"d": 1,
+"q": "Quelle émission recevait les chanteurs chez Michel Drucker le dimanche après-midi ?",
+"o": [
+"Champs-Élysées",
+"Le Grand Échiquier",
+"Numéro un",
+"Le Petit Théâtre de Bouvard"
+],
+"f": "L'émission a reçu les plus grandes vedettes françaises et internationales."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1979",
+"d": 2,
+"q": "Quel groupe britannique a sorti le double album « The Wall » ?",
+"o": [
+"Pink Floyd",
+"Genesis",
+"Yes",
+"King Crimson"
+],
+"f": "La tournée faisait construire un vrai mur entre le groupe et le public."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1980",
+"d": 2,
+"q": "Quel groupe de Manchester emmené par Ian Curtis a marqué la cold wave ?",
+"o": [
+"Joy Division",
+"The Cure",
+"The Smiths",
+"Bauhaus"
+],
+"f": "Après la mort de son chanteur, les autres membres ont fondé New Order."
+},
+{
+"t": "musique",
+"g": "X",
+"y": "1981",
+"d": 2,
+"q": "Qui chantait « Comme un avion sans aile » ?",
+"o": [
+"Charlélie Couture",
+"Alain Souchon",
+"Laurent Voulzy",
+"Jacques Higelin"
+],
+"f": "Charlélie Couture est aussi peintre et plasticien reconnu."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "1997",
+"d": 1,
+"q": "Qui chantait « Torn » ?",
+"o": [
+"Natalie Imbruglia",
+"Alanis Morissette",
+"Sheryl Crow",
+"Dido"
+],
+"f": "C'est en fait la reprise d'un titre américain sorti quelques années plus tôt."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "1995",
+"d": 1,
+"q": "Quel groupe britannique chantait « Wonderwall » ?",
+"o": [
+"Oasis",
+"Blur",
+"Pulp",
+"Suede"
+],
+"f": "La rivalité entre les frères Gallagher a fini par faire exploser le groupe."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "1996",
+"d": 1,
+"q": "Qui chantait « Aïcha », dont le texte français est signé Jean-Jacques Goldman ?",
+"o": [
+"Khaled",
+"Faudel",
+"Rachid Taha",
+"Cheb Mami"
+],
+"f": "Le titre a été un énorme succès bien au-delà des frontières françaises."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "2001",
+"d": 1,
+"q": "Qui chantait « Sous le vent » en duo avec Céline Dion ?",
+"o": [
+"Garou",
+"Florent Pagny",
+"Pascal Obispo",
+"Marc Lavoine"
+],
+"f": "Le duo est resté des semaines en tête des ventes de singles en France."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "1999",
+"d": 1,
+"q": "Quelle chanteuse américaine chantait « Genie in a Bottle » ?",
+"o": [
+"Christina Aguilera",
+"Britney Spears",
+"Jessica Simpson",
+"Mandy Moore"
+],
+"f": "Elle avait débuté enfant dans l'émission américaine « Mickey Mouse Club »."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "1997",
+"d": 1,
+"q": "Quel groupe britannique chantait « Bitter Sweet Symphony » ?",
+"o": [
+"The Verve",
+"Oasis",
+"Travis",
+"Placebo"
+],
+"f": "Un sample de cordes a longtemps privé le groupe des droits de son propre tube."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "1996",
+"d": 1,
+"q": "Quelle émission de clips de M6 était présentée par Charly et Lulu ?",
+"o": [
+"Hit Machine",
+"Top 50",
+"Graines de star",
+"Fan de"
+],
+"f": "L'émission diffusait chaque semaine le classement des clips les plus demandés."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "2000",
+"d": 2,
+"q": "Quel chanteur français a sorti l'album « Chambre avec vue » ?",
+"o": [
+"Henri Salvador",
+"Charles Aznavour",
+"Serge Reggiani",
+"Yves Duteil"
+],
+"f": "L'album a relancé sa carrière alors qu'il avait déjà plus de 80 ans."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "1991",
+"d": 2,
+"q": "Quel groupe américain chantait « Losing My Religion » ?",
+"o": [
+"R.E.M.",
+"U2",
+"The Cranberries",
+"Pearl Jam"
+],
+"f": "Le morceau est porté par une mandoline, instrument rare dans le rock."
+},
+{
+"t": "musique",
+"g": "Y",
+"y": "1995",
+"d": 2,
+"q": "Quelle chanteuse islandaise à la voix très reconnaissable a marqué les années 90 ?",
+"o": [
+"Björk",
+"Sinéad O'Connor",
+"Tori Amos",
+"PJ Harvey"
+],
+"f": "Elle a aussi joué dans « Dancer in the Dark », primé au Festival de Cannes."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2014",
+"d": 1,
+"q": "Quel producteur britannique chantait « Uptown Funk » avec Bruno Mars ?",
+"o": [
+"Mark Ronson",
+"Calvin Harris",
+"Pharrell Williams",
+"Diplo"
+],
+"f": "Il avait déjà travaillé avec Amy Winehouse quelques années plus tôt."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2012",
+"d": 1,
+"q": "Qui chantait « Call Me Maybe » ?",
+"o": [
+"Carly Rae Jepsen",
+"Katy Perry",
+"Selena Gomez",
+"Demi Lovato"
+],
+"f": "La chanteuse canadienne a été propulsée par un relais de Justin Bieber."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2012",
+"d": 1,
+"q": "Quel groupe américain chantait « Radioactive » ?",
+"o": [
+"Imagine Dragons",
+"OneRepublic",
+"Twenty One Pilots",
+"Fall Out Boy"
+],
+"f": "Le groupe vient de Las Vegas et a percé avec ce titre très radiophonique."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2011",
+"d": 1,
+"q": "Qui chantait « Elle me dit » ?",
+"o": [
+"Mika",
+"Stromae",
+"Christophe Maé",
+"M. Pokora"
+],
+"f": "Né à Beyrouth, le chanteur a signé là son premier titre en français."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2014",
+"d": 1,
+"q": "Qui chantait « Andalouse » ?",
+"o": [
+"Kendji Girac",
+"Christophe Maé",
+"Claudio Capéo",
+"Vianney"
+],
+"f": "Il a été révélé par un télé-crochet diffusé sur TF1."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2014",
+"d": 1,
+"q": "Qui chantait « Pas là », en s'accompagnant à la guitare ?",
+"o": [
+"Vianney",
+"Julien Doré",
+"Amir",
+"Christophe Maé"
+],
+"f": "Le titre figure sur son tout premier album."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2015",
+"d": 1,
+"q": "Qui chantait « Avenir » ?",
+"o": [
+"Louane",
+"Jenifer",
+"Zaz",
+"Vitaa"
+],
+"f": "Elle a aussi joué dans « La Famille Bélier », qui lui a valu un César."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2014",
+"d": 2,
+"q": "Quel chanteur irlandais chantait « Take Me to Church » ?",
+"o": [
+"Hozier",
+"Ed Sheeran",
+"James Bay",
+"George Ezra"
+],
+"f": "Le clip dénonçait les violences contre les personnes homosexuelles."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2013",
+"d": 2,
+"q": "Quelle chanteuse américaine a sorti en 2013 un album surprise, sans aucune promotion ?",
+"o": [
+"Beyoncé",
+"Rihanna",
+"Lady Gaga",
+"Taylor Swift"
+],
+"f": "L'album est apparu du jour au lendemain en ligne, avec un clip par chanson."
+},
+{
+"t": "musique",
+"g": "Z",
+"y": "2013",
+"d": 2,
+"q": "Quel rappeur français a sorti l'album « Or Noir » ?",
+"o": [
+"Kaaris",
+"Booba",
+"Gradur",
+"Lacrim"
+],
+"f": "L'album a marqué l'arrivée des sonorités trap dans le rap français."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2022",
+"d": 1,
+"q": "Quelle chanteuse américaine a sorti l'album « Midnights » ?",
+"o": [
+"Taylor Swift",
+"Olivia Rodrigo",
+"Billie Eilish",
+"Ariana Grande"
+],
+"f": "Elle a aussi réenregistré ses anciens albums pour en récupérer les droits."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2021",
+"d": 1,
+"q": "Qui chantait « Drivers License » ?",
+"o": [
+"Olivia Rodrigo",
+"Billie Eilish",
+"Gracie Abrams",
+"Sabrina Carpenter"
+],
+"f": "Le titre a battu des records d'écoutes en streaming dès sa sortie."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2019",
+"d": 1,
+"q": "Quel groupe corrézien chantait « À nos souvenirs » ?",
+"o": [
+"Trois Cafés Gourmands",
+"Boulevard des Airs",
+"Fréro Delavega",
+"Kids United"
+],
+"f": "Le groupe a explosé grâce au bouche-à-oreille et aux réseaux sociaux."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2022",
+"d": 1,
+"q": "Quel chanteur britannique chantait « Unholy » avec Kim Petras ?",
+"o": [
+"Sam Smith",
+"Harry Styles",
+"Years & Years",
+"Troye Sivan"
+],
+"f": "Le duo a décroché un Grammy, une première pour une artiste transgenre."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2022",
+"d": 1,
+"q": "Quel artiste portoricain a rempli les stades du monde entier avec sa musique latine ?",
+"o": [
+"Bad Bunny",
+"J Balvin",
+"Maluma",
+"Ozuna"
+],
+"f": "Il a été plusieurs années de suite l'artiste le plus écouté sur Spotify."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2019",
+"d": 1,
+"q": "Quelle chanteuse française chantait « Amour censure » ?",
+"o": [
+"Hoshi",
+"Louane",
+"Pomme",
+"Angèle"
+],
+"f": "La chanteuse s'accompagne souvent seule à la guitare sur scène."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2021",
+"d": 1,
+"q": "Quel rappeur français a sorti l'album « Civilisation » ?",
+"o": [
+"Orelsan",
+"Nekfeu",
+"Vald",
+"Lomepal"
+],
+"f": "L'album a été accompagné d'une série documentaire sur sa propre vie."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2023",
+"d": 2,
+"q": "Quelle chanteuse américaine a sorti l'album « SOS » ?",
+"o": [
+"SZA",
+"Doja Cat",
+"Summer Walker",
+"H.E.R."
+],
+"f": "L'album est resté de longues semaines en tête du classement américain."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2020",
+"d": 2,
+"q": "Quel rappeur belge a sorti l'album « QALF » ?",
+"o": [
+"Damso",
+"Nekfeu",
+"Vald",
+"Alpha Wann"
+],
+"f": "Il a d'abord été révélé aux côtés de Booba, sur le label 92i."
+},
+{
+"t": "musique",
+"g": "ALPHA",
+"y": "2024",
+"d": 2,
+"q": "Quelle chanteuse américaine a sorti « Cowboy Carter », son album aux accents country ?",
+"o": [
+"Beyoncé",
+"Rihanna",
+"Lizzo",
+"Kacey Musgraves"
+],
+"f": "Elle est devenue la première femme noire en tête du classement country américain."
 }
 ]
