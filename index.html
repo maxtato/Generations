@@ -232,10 +232,17 @@ input::placeholder{color:var(--cream);opacity:.35}
   display:flex;gap:2.4cqw;align-items:baseline;box-shadow:0 3px 0 rgba(0,0,0,.18);transition:transform .07s,box-shadow .07s}
 .opt:active{transform:translateY(3px);box-shadow:0 0 0 rgba(0,0,0,.18)}
 .opt em{font-style:normal;font-weight:800;font-size:2.6cqw;opacity:.45;letter-spacing:.1em}
-.opt.good{background:var(--pk-acc);color:#FFF9EC;border-color:var(--pk-ink)}
-.opt.bad{opacity:.36;text-decoration:line-through;box-shadow:none;transform:translateY(3px)}
+/* révélation : vert pour la bonne réponse, rouge pour celle qu'on a choisie à
+   tort — couleurs constantes quelle que soit la génération de la carte */
+.opt.good{background:#1F9B4F;color:#fff;border-color:#0F5C2E;font-weight:800}
+.opt.bad{background:#D33B33;color:#fff;border-color:#7E1E19;font-weight:800}
+.opt.good::after,.opt.bad::after{margin-left:auto;font-size:4.2cqw;font-weight:900;line-height:1;flex:0 0 auto}
+.opt.good::after{content:'✓'}
+.opt.bad::after{content:'✗'}
+.opt.good em,.opt.bad em{color:#fff;opacity:.7}
+.opts.locked .opt:not(.good):not(.bad){opacity:.4}
 .opts.locked .opt{pointer-events:none}
-.opt.sel{box-shadow:inset 0 0 0 2px var(--pk-ink);background:rgba(255,255,255,.85)}
+.opt.sel{box-shadow:inset 0 0 0 3px var(--pk-ink);background:rgba(255,255,255,.92)}
 /* le verdict : panneau opaque aux couleurs de l'appli, qui prend la place de
    la question (déjà lue) — les réponses restent visibles et dans leur ordre */
 .verdict{position:relative;z-index:2;flex:0 0 auto;overflow:hidden;
