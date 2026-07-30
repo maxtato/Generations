@@ -29,10 +29,24 @@ réussite de chacun sur son territoire et en terrain adverse.
 
 ## Contenu
 
-- 150 cartes, chacune avec une anecdote « le savais-tu » révélée après la réponse
-- Deux niveaux de difficulté : **Classique** (100 cartes, 20 s par question) et
-  **Expert** (50 cartes nettement plus pointues, 15 s) — choisi sur l'écran de
+- **2148 cartes**, chacune avec une anecdote « le savais-tu » révélée après la réponse
+- Deux niveaux de difficulté : **Classique** (~1500 cartes, 20 s par question) et
+  **Expert** (~650 cartes nettement plus pointues, 15 s) — choisi sur l'écran de
   préparation en solo, et par l'hôte dans le salon en ligne
+- Dix thèmes, affichés sur la carte à côté de l'année : Objets du quotidien,
+  Télé & dessins animés, Musique, Cinéma, Jeux vidéo, Technologie, Pub &
+  marques, Mode & tendances, Événements vécus, Expressions & langage
+- Formats variés : QCM, Vrai/Faux, « Avant ou après ? » et « Quelle génération
+  a été la première à… » (ces dernières font parler toute la table)
+
+## Banque de questions
+
+Les sources vivent dans `qbank/<theme>.json` (un fichier par thème, plus
+`base.json` qui fige les cartes d'origine). Le script de fusion
+`merge-qbank.js` les valide (bonne réponse en tête, options distinctes,
+longueurs, anecdote présente), dédoublonne globalement et régénère
+`questions.js`, le seul fichier que charge le jeu. Pour ajouter des questions :
+éditer ou ajouter un fichier de thème, relancer la fusion.
 - 2 à 6 joueurs, manches illimitées, scores cumulés
 - Le plateau de joueurs est sauvegardé localement (localStorage)
 
