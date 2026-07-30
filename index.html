@@ -100,6 +100,37 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
   color:rgba(255,197,60,.85)}
 
 /* ============ EN LIGNE : PROFIL / SALON ============ */
+/* champ prénom avec son intitulé */
+.field{display:flex;flex-direction:column;gap:5px;flex:0 0 auto}
+.field span{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);opacity:.8;padding-left:3px}
+
+/* sélecteur de génération : la vraie carte défile entre deux flèches */
+.gpick-lab{font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);opacity:.8;padding-left:3px;margin-top:2px;flex:0 0 auto}
+.gpick{display:flex;align-items:center;gap:8px;flex:1 1 auto;min-height:0}
+.arw{flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:2px solid transparent;
+  background:linear-gradient(180deg,#152A45,#0D1C31) padding-box,var(--edge) border-box;
+  color:var(--cream);font-size:24px;font-weight:800;line-height:1;padding:0 0 3px;
+  display:flex;align-items:center;justify-content:center;transition:opacity .1s}
+.arw:active{opacity:.6}
+.gstage{flex:1;height:100%;display:flex;align-items:center;justify-content:center;
+  perspective:900px;min-height:0;overflow:hidden}
+.gcard{height:min(100%,340px);aspect-ratio:2/3;border-radius:14px;position:relative;overflow:hidden;
+  background:var(--pk-back) var(--pk-img) center/cover;
+  border:3px solid var(--gcol);box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.gcard.swap{animation:gswap .28s ease}
+@keyframes gswap{0%{opacity:0;transform:translateX(var(--dir,18px)) scale(.94)}100%{opacity:1;transform:none}}
+.gpan{position:absolute;inset:var(--panel);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:3px;text-align:center;color:var(--pk-ink);container-type:size}
+.gpan strong{font-size:9cqw;font-weight:800;letter-spacing:.02em;line-height:1}
+.gpan em{font-style:normal;font-size:3.6cqw;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.72}
+.gpan span{margin-top:4cqw;font-size:3.4cqw;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:1.6cqw 3cqw;border:2px solid var(--pk-ink);border-radius:20px}
+.gdots{display:flex;gap:7px;justify-content:center;flex:0 0 auto;padding:2px 0}
+.gdots i{width:8px;height:8px;border-radius:50%;background:var(--dcol);opacity:.28;transition:opacity .15s,transform .15s}
+.gdots i.on{opacity:1;transform:scale(1.45)}
+
 #ocode{text-transform:uppercase;letter-spacing:.3em;font-weight:800;text-align:center}
 .qrbox{border:2px solid rgba(255,197,60,.45);background:var(--panel);border-radius:14px;
   padding:14px;display:flex;flex-direction:column;gap:9px;align-items:center;flex:0 0 auto}
@@ -299,8 +330,19 @@ input::placeholder{color:var(--cream);opacity:.35}
 
 <section id="s-ident" class="screen">
   <div class="rail"><b>Ton profil</b><span id="ident-ctx"></span></div>
-  <input id="oname" type="text" placeholder="Prénom" maxlength="12" autocomplete="off">
-  <div class="gens" id="ogens"></div>
+  <label class="field"><span>Ton prénom</span>
+    <input id="oname" type="text" placeholder="Prénom" maxlength="12" autocomplete="off"></label>
+  <div class="gpick-lab">Ta génération</div>
+  <div class="gpick">
+    <button class="arw" id="gp-prev" type="button" aria-label="Génération précédente">‹</button>
+    <div class="gstage" id="gp-stage">
+      <div class="gcard" id="gp-card">
+        <div class="gpan"><strong id="gp-born"></strong><em id="gp-era"></em><span id="gp-name"></span></div>
+      </div>
+    </div>
+    <button class="arw" id="gp-next" type="button" aria-label="Génération suivante">›</button>
+  </div>
+  <div class="gdots" id="gp-dots"></div>
   <input id="ocode" type="text" placeholder="Code de la partie" maxlength="5" autocomplete="off">
   <div class="stack">
     <div class="diffrow" id="ident-diff">
@@ -2988,17 +3030,51 @@ function leaveNet(){
 function netFail(msg){alert(msg);leaveNet()}
 
 /* ---- profil (nom + génération), commun hôte / invité ---- */
-let identMode=null,opick=null;
-const ogensEl=$('#ogens');
-GENS.forEach(g=>{
-  const b=document.createElement('button');
-  b.className='gen-pick';b.type='button';b.setAttribute('aria-pressed','false');
-  b.style.setProperty('--gcol',g.col);
-  b.innerHTML=`<i></i><strong>${g.short}</strong><small>né en ${g.born}</small>`;
-  b.onclick=()=>{opick=g.id;syncOgens()};
-  ogensEl.appendChild(b);
+let identMode=null,opick=null,gpIdx=0;
+
+/* sélecteur de génération : carrousel de vraies cartes */
+const dotsEl=$('#gp-dots');
+GENS.forEach((g,i)=>{
+  const d=document.createElement('i');
+  d.style.setProperty('--dcol',g.col);
+  d.onclick=()=>gpGo(i,i>gpIdx?1:-1);
+  dotsEl.appendChild(d);
 });
-function syncOgens(){[...ogensEl.children].forEach((c,i)=>c.setAttribute('aria-pressed',GENS[i].id===opick?'true':'false'))}
+function syncOgens(){
+  const g=GENS[gpIdx];opick=g.id;
+  const card=$('#gp-card');
+  card.dataset.sk=g.id;
+  card.style.setProperty('--gcol',g.col);
+  $('#gp-born').textContent=g.born;
+  $('#gp-era').textContent=g.era;
+  $('#gp-name').textContent=g.short;
+  [...dotsEl.children].forEach((d,i)=>d.classList.toggle('on',i===gpIdx));
+}
+function gpGo(i,dir){
+  gpIdx=(i+GENS.length)%GENS.length;
+  const card=$('#gp-card');
+  card.style.setProperty('--dir',(dir>0?26:-26)+'px');
+  card.classList.remove('swap');void card.offsetWidth;card.classList.add('swap');
+  syncOgens();
+}
+$('#gp-prev').onclick=()=>gpGo(gpIdx-1,-1);
+$('#gp-next').onclick=()=>gpGo(gpIdx+1,1);
+/* balayage tactile sur la carte */
+(function(){
+  const st=$('#gp-stage');let x0=null;
+  st.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+  st.addEventListener('touchend',e=>{
+    if(x0===null)return;
+    const dx=e.changedTouches[0].clientX-x0;x0=null;
+    if(Math.abs(dx)>34)gpGo(gpIdx+(dx<0?1:-1),dx<0?1:-1);
+  },{passive:true});
+  st.onclick=()=>gpGo(gpIdx+1,1);
+})();
+document.addEventListener('keydown',e=>{
+  if(!$('#s-ident').classList.contains('on'))return;
+  if(e.key==='ArrowLeft')gpGo(gpIdx-1,-1);
+  if(e.key==='ArrowRight')gpGo(gpIdx+1,1);
+});
 
 function openIdent(mode,code){
   identMode=mode;
@@ -3008,7 +3084,7 @@ function openIdent(mode,code){
   $('#ocode').value=code||'';
   try{
     const me=JSON.parse(localStorage.getItem('gens-me')||'null');
-    if(me&&G(me.gen)){$('#oname').value=me.name;opick=me.gen}
+    if(me&&G(me.gen)){$('#oname').value=me.name;gpIdx=gi(me.gen)}
   }catch(e){}
   syncOgens();
   show('ident');

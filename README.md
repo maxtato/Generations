@@ -21,6 +21,11 @@ Jeu de société mobile en un seul fichier (`index.html`), à jouer à plusieurs
 L'accueil propose **Solo** et **Multijoueur** ; le menu multijoueur regroupe
 « Créer une partie », « Rejoindre une partie » et « Sur le même téléphone ».
 
+Sur l'écran de profil, la génération se choisit dans un carrousel qui fait
+défiler les vraies cartes du jeu (flèches, points de navigation, balayage
+tactile et flèches du clavier) ; les années et l'époque s'affichent dans le
+panneau crème de la carte, comme pendant une partie.
+
 ## Principe
 
 Chaque carte est un objet ou un événement d'époque, rattaché à une des 5 générations
