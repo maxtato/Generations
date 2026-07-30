@@ -73,6 +73,18 @@ la DA, remplacer ces fichiers puis ré-encoder en base64 dans `index.html`
 (variables `--pk-img`) ; la zone du panneau crème se règle par génération via
 la variable CSS `--panel` (insets haut/droite/bas/gauche).
 
+## Installer sur mobile
+
+Le jeu est installable comme une application : sur iPhone, ouvrir le site dans
+Safari puis *Partager → Sur l'écran d'accueil* ; l'icône (`img/icon.png`)
+apparaît sur l'écran d'accueil et le jeu s'ouvre en plein écran, sans barre
+d'adresse (`manifest.webmanifest` + balises `apple-touch-icon`).
+
+Deux variantes d'icône sont conservées dans `img/` :
+`icon-variante-eventail.png` (éventail doré, proche de l'emblème) et
+`icon-variante-carte.png` (une carte, un grand « ? »). Pour en adopter une,
+la copier sur `img/icon.png` et régénérer les tailles 180/192/512.
+
 ## Lancer le jeu
 
 Ouvrir `index.html` dans un navigateur, idéalement sur mobile. Fichier unique,
