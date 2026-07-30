@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1b1b1b;padding:30px;font-family:'DejaVu Sans',sans-serif}
+.row{display:flex;gap:34px;align-items:flex-start}
+.wrap{display:flex;flex-direction:column;gap:12px;align-items:center}
+.lab{color:#bbb;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+.mini{display:flex;gap:10px;align-items:flex-end}
+.icon{width:512px;height:512px;position:relative;overflow:hidden;flex:0 0 auto;
+  background:radial-gradient(circle at 50% 36%,#1C3758 0%,#0E1F36 58%,#081321 100%)}
+.pat{position:absolute;inset:0;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cg fill='%23fff'%3E%3Ctext x='6' y='42' font-family='sans-serif' font-weight='900' font-size='40'%3E%3F%3C/text%3E%3Cpath d='M84 12l5 12 13 1-10 9 3 13-11-7-11 7 3-13-10-9 13-1z'/%3E%3Cpath d='M20 80l15-24h10l-8 15h13l-24 32 6-20h-12z'/%3E%3Ctext x='76' y='116' font-family='sans-serif' font-weight='900' font-size='32'%3E%3F%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-size:128px}
+
+/* éventail : chaque carte pivote autour d'un point bas commun */
+.fan{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:0;height:0}
+.card{position:absolute;border-radius:18px;background:linear-gradient(165deg,#193558,#0A1A2E);
+  box-shadow:0 12px 26px rgba(0,0,0,.55);transform-origin:50% 122%}
+.card i{position:absolute;width:24px;height:24px;border:6px solid currentColor;border-radius:3px}
+.card i.tl{left:13px;top:13px;border-right:0;border-bottom:0}
+.card i.br{right:13px;bottom:13px;border-left:0;border-top:0}
+.qm{position:absolute;left:50%;top:50%;transform:translate(-50%,-53%);
+  font-weight:900;line-height:1;
+  background:linear-gradient(180deg,#FFF2C2,#FFC53C 46%,#E79B1C);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 3px rgba(0,0,0,.6))}
+
+/* ---------- A : éventail doré, 3 cartes ---------- */
+#a .ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:396px;height:396px;border-radius:50%;border:7px solid rgba(255,197,60,.28)}
+#a .card{width:158px;height:224px;margin:-112px 0 0 -79px;border:8px solid #FFC53C;color:#FFC53C}
+#a .card:nth-child(1){transform:rotate(-24deg)}
+#a .card:nth-child(2){transform:rotate(24deg)}
+#a .card:nth-child(3){transform:rotate(0);border-color:#FFD75E;color:#FFD75E}
+#a .qm{font-size:158px}
+
+/* ---------- B : les cinq générations ---------- */
+#b .card{width:158px;height:224px;margin:-112px 0 0 -79px;border:9px solid;transform-origin:50% 126%}
+#b .c1{transform:rotate(-38deg);border-color:#E8853F;color:#E8853F}
+#b .c2{transform:rotate(-19deg);border-color:#FF6BB2;color:#FF6BB2}
+#b .c5{transform:rotate(38deg);border-color:#8CD86B;color:#8CD86B}
+#b .c4{transform:rotate(19deg);border-color:#7FA8E8;color:#7FA8E8}
+#b .c3{transform:rotate(0);border-color:#FFC53C;color:#FFC53C}
+#b .qm{font-size:150px}
+#b .fan{top:45.5%}
+#b .card{border-radius:18px}
+
+/* ---------- C : une carte, un « ? » monumental ---------- */
+#c .card{width:264px;height:352px;margin:-176px 0 0 -132px;border:10px solid #FFC53C;color:#FFC53C;
+  transform:rotate(-7deg);transform-origin:50% 50%;border-radius:30px}
+#c .card i{width:36px;height:36px;border-width:9px;border-radius:4px}
+#c .card i.tl{left:20px;top:20px}
+#c .card i.br{right:20px;bottom:20px}
+#c .qm{font-size:236px}
+
+/* aperçus taille réelle */
+.p180,.p120,.p60{border-radius:22.5%;overflow:hidden;flex:0 0 auto}
+.p180{width:180px;height:180px}
+.p120{width:120px;height:120px;border-radius:22.5%}
+.p60{width:60px;height:60px;border-radius:22.5%}
+.p180 .icon,.p120 .icon,.p60 .icon{transform-origin:0 0}
+.p180 .icon{transform:scale(.3516)}
+.p120 .icon{transform:scale(.2344)}
+.p60 .icon{transform:scale(.1172)}
+</style></head><body>
+<div class="row">
+
+<div class="wrap"><div class="lab">A — Éventail</div>
+  <div class="icon" id="a">
+    <div class="pat"></div><div class="ring"></div>
+    <div class="fan">
+      <div class="card"><i class="tl"></i><i class="br"></i></div>
+      <div class="card"><i class="tl"></i><i class="br"></i></div>
+      <div class="card"><i class="tl"></i><i class="br"></i><div class="qm">?</div></div>
+    </div>
+  </div>
+  <div class="mini">
+    <div class="p180"><div class="icon" id="a2"><div class="pat"></div><div class="ring"></div>
+      <div class="fan"><div class="card"><i class="tl"></i><i class="br"></i></div>
+      <div class="card"><i class="tl"></i><i class="br"></i></div>
+      <div class="card"><i class="tl"></i><i class="br"></i><div class="qm">?</div></div></div></div></div>
+    <div class="p60"><div class="icon"><div class="pat"></div><div class="ring"></div>
+      <div class="fan"><div class="card"><i class="tl"></i><i class="br"></i></div>
+      <div class="card"><i class="tl"></i><i class="br"></i></div>
+      <div class="card"><i class="tl"></i><i class="br"></i><div class="qm">?</div></div></div></div></div>
+  </div>
+</div>
+
+<div class="wrap"><div class="lab">B — Cinq générations</div>
+  <div class="icon" id="b">
+    <div class="pat"></div>
+    <div class="fan">
+      <div class="card c1"></div><div class="card c2"></div>
+      <div class="card c5"></div><div class="card c4"></div>
+      <div class="card c3"><div class="qm">?</div></div>
+    </div>
+  </div>
+  <div class="mini">
+    <div class="p180"><div class="icon" id="b2"><div class="pat"></div>
+      <div class="fan"><div class="card c1"></div><div class="card c2"></div>
+      <div class="card c5"></div><div class="card c4"></div>
+      <div class="card c3"><div class="qm">?</div></div></div></div></div>
+    <div class="p60"><div class="icon"><div class="pat"></div>
+      <div class="fan"><div class="card c1"></div><div class="card c2"></div>
+      <div class="card c5"></div><div class="card c4"></div>
+      <div class="card c3"><div class="qm">?</div></div></div></div></div>
+  </div>
+</div>
+
+<div class="wrap"><div class="lab">C — La carte mystère</div>
+  <div class="icon" id="c">
+    <div class="pat"></div>
+    <div class="fan"><div class="card"><i class="tl"></i><i class="br"></i><div class="qm">?</div></div></div>
+  </div>
+  <div class="mini">
+    <div class="p180"><div class="icon" id="c2"><div class="pat"></div>
+      <div class="fan"><div class="card"><i class="tl"></i><i class="br"></i><div class="qm">?</div></div></div></div></div>
+    <div class="p60"><div class="icon"><div class="pat"></div>
+      <div class="fan"><div class="card"><i class="tl"></i><i class="br"></i><div class="qm">?</div></div></div></div></div>
+  </div>
+</div>
+
+</div></body></html>
