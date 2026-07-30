@@ -4,6 +4,18 @@ Jeu de société mobile en un seul fichier (`index.html`), à jouer à plusieurs
 
 **Jouer en ligne : [generations-black.vercel.app](https://generations-black.vercel.app)**
 
+## Deux façons de jouer
+
+- **À plusieurs téléphones (en ligne)** : l'hôte crée une partie, un QR code
+  s'affiche ; chacun le scanne, entre son prénom et sa génération, et tout le
+  monde reçoit les mêmes questions en même temps (10 par manche, 2 par
+  génération). Chacun répond sur son téléphone, le résultat de tous s'affiche
+  après chaque question, puis l'hôte enchaîne. La connexion est directe entre
+  téléphones (WebRTC via PeerJS, broker public gratuit) — aucun serveur à
+  héberger.
+- **Sur un seul téléphone** : le mode d'origine, on se passe le téléphone,
+  chacun tire 5 cartes personnelles.
+
 ## Principe
 
 Chaque carte est un objet ou un événement d'époque, rattaché à une des 5 générations
