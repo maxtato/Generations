@@ -34,7 +34,7 @@ body{
 .rail b{font-weight:800;letter-spacing:.2em;font-size:12px;text-transform:uppercase}
 .rail span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;opacity:.6}
 
-button{font-family:inherit;color:var(--ink);cursor:pointer;border:2px solid var(--ink);background:transparent}
+button{font-family:inherit;color:var(--ink);cursor:pointer;border:2px solid var(--ink);background:transparent;touch-action:manipulation}
 button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .btn{width:100%;background:var(--ink);color:var(--paper);font-weight:800;letter-spacing:.15em;
   text-transform:uppercase;font-size:13px;padding:15px;border-radius:11px;
@@ -148,6 +148,7 @@ input::placeholder{color:var(--ink);opacity:.38}
 .verdict.hide{visibility:hidden}
 .verdict .pts{font-family:var(--sk-font);font-size:24px;line-height:1;letter-spacing:var(--sk-track,0);white-space:nowrap;color:var(--sk-acc)}
 .verdict .msg{font-size:11.5px;line-height:1.35;font-weight:700;flex:1}
+.verdict .msg .fact{display:block;font-size:10.5px;font-weight:600;opacity:.75;margin-top:3px}
 .verdict .go{border:2px solid var(--sk-ink);border-radius:9px;background:var(--sk-ink);color:var(--sk-bg);
   font-weight:800;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;
   box-shadow:0 3px 0 rgba(0,0,0,.25)}
@@ -217,7 +218,7 @@ input::placeholder{color:var(--ink);opacity:.38}
   <div class="eyebrow">Le quiz des générations</div>
   <div class="fan" id="fan"></div>
   <p class="tag">Chaque carte est un objet d'époque. Sur ta génération, tu es <b>censé savoir</b> — et te tromper coûte cher. Sur celle des autres, chaque bonne réponse vaut double, triple, quadruple.</p>
-  <p class="legend">5 générations · 2 à 6 joueurs · un seul téléphone<br>5 cartes par joueur · 20 secondes chacune</p>
+  <p class="legend">5 générations · 100 cartes · un seul téléphone<br>2 à 6 joueurs · 5 cartes chacun · 20 secondes par carte</p>
   <button class="btn accent" data-go="setup">Composer les joueurs</button>
 </section>
 
@@ -295,64 +296,114 @@ function mult(pGen,qGen){
 const BANK=[
 
 /* --- BOOMER --- */
-{g:'BOOMER',y:'1969',q:"Quel groupe britannique a donné son dernier concert public sur le toit de son immeuble à Londres ?",o:["Les Beatles","Les Rolling Stones","The Who","The Kinks"],a:0},
-{g:'BOOMER',y:'1969',q:"Quel festival a rassemblé des centaines de milliers de personnes dans l'État de New York pendant trois jours ?",o:["Woodstock","Monterey","Isle of Wight","Altamont"],a:0},
-{g:'BOOMER',y:'1969',q:"Quelle mission a posé les premiers humains sur la Lune ?",o:["Apollo 11","Apollo 13","Gemini 4","Soyouz 1"],a:0},
-{g:'BOOMER',y:'1961',q:"Qui est devenu le premier humain à voyager dans l'espace ?",o:["Youri Gagarine","Neil Armstrong","Alan Shepard","Valentina Terechkova"],a:0},
-{g:'BOOMER',y:'1966',q:"Quelle série de science-fiction suivait l'équipage d'un vaisseau nommé Enterprise ?",o:["Star Trek","Doctor Who","Perdus dans l'espace","La Quatrième Dimension"],a:0},
-{g:'BOOMER',y:'1972',q:"Quel appareil photo a rendu le tirage instantané célèbre dans le monde entier ?",o:["Le Polaroid","Le Leica","Le Rolleiflex","Le Nikon F"],a:0},
-{g:'BOOMER',y:'1967',q:"Quelle petite voiture allemande à moteur arrière est devenue un symbole de la contre-culture ?",o:["La Coccinelle","La Mini","La 2CV","La Fiat 500"],a:0},
-{g:'BOOMER',y:'1956',q:"Quel chanteur américain était surnommé « le King » ?",o:["Elvis Presley","Chuck Berry","Buddy Holly","Little Richard"],a:0},
-{g:'BOOMER',y:'1964',q:"Quel boxeur poids lourds a changé de nom après sa conversion religieuse ?",o:["Mohamed Ali","Joe Frazier","George Foreman","Sugar Ray Robinson"],a:0},
-{g:'BOOMER',y:'1970',q:"Quel jouet métallique à ressort était célèbre pour descendre les escaliers tout seul ?",o:["Le Slinky","Le Yo-yo","Le Hula Hoop","Le Diabolo"],a:0},
+{g:'BOOMER',y:'1969',q:"Quel groupe britannique a donné son dernier concert public sur le toit de son immeuble à Londres ?",o:["Les Beatles","Les Rolling Stones","The Who","The Kinks"],a:0,f:"42 minutes de musique avant que la police ne fasse couper le courant."},
+{g:'BOOMER',y:'1969',q:"Quel festival a rassemblé des centaines de milliers de personnes dans l'État de New York pendant trois jours ?",o:["Woodstock","Monterey","Isle of Wight","Altamont"],a:0,f:"Prévu pour 50 000 personnes — près de 500 000 sont venues."},
+{g:'BOOMER',y:'1969',q:"Quelle mission a posé les premiers humains sur la Lune ?",o:["Apollo 11","Apollo 13","Gemini 4","Soyouz 1"],a:0,f:"600 millions de téléspectateurs, un record absolu pour l'époque."},
+{g:'BOOMER',y:'1961',q:"Qui est devenu le premier humain à voyager dans l'espace ?",o:["Youri Gagarine","Neil Armstrong","Alan Shepard","Valentina Terechkova"],a:0,f:"108 minutes en orbite, et un mot resté célèbre : « Poïekhali ! » — c'est parti."},
+{g:'BOOMER',y:'1966',q:"Quelle série de science-fiction suivait l'équipage d'un vaisseau nommé Enterprise ?",o:["Star Trek","Doctor Who","Perdus dans l'espace","La Quatrième Dimension"],a:0,f:"Annulée au bout de trois saisons, culte pour toujours."},
+{g:'BOOMER',y:'1972',q:"Quel appareil photo a rendu le tirage instantané célèbre dans le monde entier ?",o:["Le Polaroid","Le Leica","Le Rolleiflex","Le Nikon F"],a:0,f:"Secouer la photo ne servait à rien — la marque le déconseillait même."},
+{g:'BOOMER',y:'1967',q:"Quelle petite voiture allemande à moteur arrière est devenue un symbole de la contre-culture ?",o:["La Coccinelle","La Mini","La 2CV","La Fiat 500"],a:0,f:"Plus de 21 millions d'exemplaires produits en 65 ans de carrière."},
+{g:'BOOMER',y:'1956',q:"Quel chanteur américain était surnommé « le King » ?",o:["Elvis Presley","Chuck Berry","Buddy Holly","Little Richard"],a:0,f:"Ses déhanchés étaient jugés si scandaleux qu'on le filmait au-dessus de la ceinture."},
+{g:'BOOMER',y:'1964',q:"Quel boxeur poids lourds a changé de nom après sa conversion religieuse ?",o:["Mohamed Ali","Joe Frazier","George Foreman","Sugar Ray Robinson"],a:0,f:"Né Cassius Clay, « le plus grand » fut trois fois champion du monde."},
+{g:'BOOMER',y:'1970',q:"Quel jouet métallique à ressort était célèbre pour descendre les escaliers tout seul ?",o:["Le Slinky","Le Yo-yo","Le Hula Hoop","Le Diabolo"],a:0,f:"Inventé par accident par un ingénieur de la marine américaine."},
+{g:'BOOMER',y:'1963',q:"Quel président américain a été assassiné à Dallas ?",o:["John F. Kennedy","Richard Nixon","Lyndon Johnson","Robert Kennedy"],a:0,f:"Toute une génération se souvient d'où elle était ce 22 novembre 1963."},
+{g:'BOOMER',y:'1968',q:"Quel mois de 1968 a vu étudiants et ouvriers paralyser la France entière ?",o:["Mai","Mars","Octobre","Janvier"],a:0,f:"Dix millions de grévistes — la plus grande grève de l'histoire de France."},
+{g:'BOOMER',y:'1962',q:"Quel chanteur français faisait s'évanouir les foules avec « L'idole des jeunes » ?",o:["Johnny Hallyday","Claude François","Jacques Dutronc","Salvatore Adamo"],a:0,f:"Son concert gratuit place de la Nation en 1963 a tourné à l'émeute."},
+{g:'BOOMER',y:'1967',q:"Quelle grande nouveauté est arrivée sur la télévision française le 1er octobre 1967 ?",o:["La couleur","La télécommande","La troisième chaîne","La publicité"],a:0,f:"Le procédé SECAM, une fierté française face au PAL allemand."},
+{g:'BOOMER',y:'1973',q:"Quelle crise a privé les automobilistes d'essence et instauré les limitations de vitesse ?",o:["Le choc pétrolier","La crise de Suez","Le krach boursier","La guerre froide"],a:0,f:"En France, la télé s'arrêtait à 23 h pour économiser l'énergie."},
+{g:'BOOMER',y:'1969',q:"Quel avion supersonique franco-britannique a fait son premier vol à Toulouse ?",o:["Le Concorde","Le Tupolev","La Caravelle","Le Mirage"],a:0,f:"Paris–New York en 3 h 30, à deux fois la vitesse du son."},
+{g:'BOOMER',y:'1961',q:"Quelle danse popularisée par Chubby Checker se dansait sans toucher son partenaire ?",o:["Le twist","Le rock","Le jerk","Le madison"],a:0,f:"Une révolution : pour la première fois, chacun dansait seul face à l'autre."},
+{g:'BOOMER',y:'1972',q:"Quel jeu d'arcade avec deux raquettes et une balle a lancé toute une industrie ?",o:["Pong","Space Invaders","Asteroids","Pac-Man"],a:0,f:"Le prototype installé dans un bar est tombé en panne : la caisse débordait de pièces."},
+{g:'BOOMER',y:'1955',q:"Quel acteur, mort à 24 ans, est devenu l'icône de « La Fureur de vivre » ?",o:["James Dean","Marlon Brando","Paul Newman","Steve McQueen"],a:0,f:"Trois films seulement ont suffi à en faire une légende."},
+{g:'BOOMER',y:'1974',q:"Quel groupe suédois a gagné l'Eurovision avec « Waterloo » ?",o:["ABBA","Boney M","Les Bee Gees","Slade"],a:0,f:"Le tremplin de l'un des groupes les plus vendus de tous les temps."},
 
 /* --- X --- */
-{g:'X',y:'1985',q:"Quelle console japonaise a relancé le jeu vidéo en Occident après l'effondrement du marché ?",o:["La NES","L'Atari 2600","La Master System","La Mega Drive"],a:0},
-{g:'X',y:'1983',q:"Quel support permettait d'enregistrer une émission de télévision chez soi ?",o:["La cassette VHS","Le DVD","Le LaserDisc","Le MiniDV"],a:0},
-{g:'X',y:'1979',q:"Quel baladeur de Sony a rendu la musique portable ?",o:["Le Walkman","Le Discman","Le Boombox","L'iPod"],a:0},
-{g:'X',y:'1980',q:"Quel casse-tête coloré inventé par un architecte hongrois a envahi les cours de récré ?",o:["Le Rubik's Cube","Le Simon","Le Tamagotchi","Le Slinky"],a:0},
-{g:'X',y:'1985',q:"Quel film envoyait un adolescent trente ans en arrière à bord d'une DeLorean ?",o:["Retour vers le futur","E.T.","Les Goonies","Gremlins"],a:0},
-{g:'X',y:'1982',q:"Quel chanteur américain a sorti l'album le plus vendu de tous les temps ?",o:["Michael Jackson","Prince","Lionel Richie","Bruce Springsteen"],a:0},
-{g:'X',y:'1984',q:"Quelle figurine musclée à l'épée et au château dominait les rayons jouets ?",o:["Musclor","G.I. Joe","Action Man","Big Jim"],a:0},
-{g:'X',y:'1989',q:"Quel jeu de briques qui tombent, né en URSS, a explosé partout dans le monde ?",o:["Tetris","Pac-Man","Breakout","Columns"],a:0},
-{g:'X',y:'1986',q:"Quelle coupe de cheveux se portait courte devant et longue derrière ?",o:["La mulet","La banane","L'iroquois","Le carré"],a:0},
-{g:'X',y:'1989',q:"Quel mur est tombé en novembre, marquant la fin d'une époque en Europe ?",o:["Le mur de Berlin","Le mur d'Hadrien","Le rideau de fer de Prague","Le mur de Belfast"],a:0},
+{g:'X',y:'1985',q:"Quelle console japonaise a relancé le jeu vidéo en Occident après l'effondrement du marché ?",o:["La NES","L'Atari 2600","La Master System","La Mega Drive"],a:0,f:"Vendue avec un petit robot, R.O.B., pour rassurer les magasins échaudés."},
+{g:'X',y:'1983',q:"Quel support permettait d'enregistrer une émission de télévision chez soi ?",o:["La cassette VHS","Le DVD","Le LaserDisc","Le MiniDV"],a:0,f:"La VHS a gagné sa guerre contre le Betamax, pourtant meilleur techniquement."},
+{g:'X',y:'1979',q:"Quel baladeur de Sony a rendu la musique portable ?",o:["Le Walkman","Le Discman","Le Boombox","L'iPod"],a:0,f:"Son cofondateur voulait simplement écouter de l'opéra en avion."},
+{g:'X',y:'1980',q:"Quel casse-tête coloré inventé par un architecte hongrois a envahi les cours de récré ?",o:["Le Rubik's Cube","Le Simon","Le Tamagotchi","Le Slinky"],a:0,f:"Ernő Rubik a mis un mois entier à résoudre son propre cube."},
+{g:'X',y:'1985',q:"Quel film envoyait un adolescent trente ans en arrière à bord d'une DeLorean ?",o:["Retour vers le futur","E.T.","Les Goonies","Gremlins"],a:0,f:"La DeLorean voyage dans le temps à 88 miles à l'heure — 142 km/h."},
+{g:'X',y:'1982',q:"Quel chanteur américain a sorti l'album le plus vendu de tous les temps ?",o:["Michael Jackson","Prince","Lionel Richie","Bruce Springsteen"],a:0,f:"Le clip de « Thriller » a coûté plus cher que bien des films de l'époque."},
+{g:'X',y:'1984',q:"Quelle figurine musclée à l'épée et au château dominait les rayons jouets ?",o:["Musclor","G.I. Joe","Action Man","Big Jim"],a:0,f:"« Par le pouvoir du crâne ancestral… je détiens la force toute-puissante ! »"},
+{g:'X',y:'1989',q:"Quel jeu de briques qui tombent, né en URSS, a explosé partout dans le monde ?",o:["Tetris","Pac-Man","Breakout","Columns"],a:0,f:"Sur le premier ordinateur d'Alexeï Pajitnov, les briques étaient des crochets de texte."},
+{g:'X',y:'1986',q:"Quelle coupe de cheveux se portait courte devant et longue derrière ?",o:["La mulet","La banane","L'iroquois","Le carré"],a:0,f:"« Sérieux devant, fête derrière », disait la légende."},
+{g:'X',y:'1989',q:"Quel mur est tombé en novembre, marquant la fin d'une époque en Europe ?",o:["Le mur de Berlin","Le mur d'Hadrien","Le rideau de fer de Prague","Le mur de Belfast"],a:0,f:"Ouvert le soir même d'une conférence de presse ratée, le 9 novembre."},
+{g:'X',y:'1981',q:"Quelle chaîne américaine a lancé la diffusion de clips musicaux 24 heures sur 24 ?",o:["MTV","VH1","CBS","Canal+"],a:0,f:"Premier clip diffusé : « Video Killed the Radio Star »."},
+{g:'X',y:'1982',q:"Quel extraterrestre voulait juste « téléphoner maison » ?",o:["E.T.","Alf","Yoda","Chewbacca"],a:0,f:"Spielberg a tourné presque tout le film à hauteur d'enfant."},
+{g:'X',y:'1984',q:"Quel film de chasseurs de fantômes a fait chanter « Who you gonna call ? » ?",o:["SOS Fantômes","Beetlejuice","Poltergeist","Gremlins"],a:0,f:"La chanson de Ray Parker Jr. est restée trois semaines numéro un aux États-Unis."},
+{g:'X',y:'1983',q:"Quel terminal français permettait de consulter l'annuaire et des messageries depuis chez soi ?",o:["Le Minitel","Le Télétel","Le Videotex","Le Bi-Bop"],a:0,f:"L'Internet avant Internet — neuf millions de terminaux dans les foyers français."},
+{g:'X',y:'1987',q:"Quelle émission de Dorothée a marqué les mercredis des enfants français ?",o:["Le Club Dorothée","Récré A2","Les Minikeums","Croque-Vacances"],a:0,f:"Jusqu'à 30 heures d'antenne par semaine, et l'arrivée massive des dessins animés japonais."},
+{g:'X',y:'1980',q:"Dans « L'Empire contre-attaque », quelle révélation choc fait Dark Vador à Luke ?",o:["« Je suis ton père »","« Rejoins-moi »","« Obi-Wan t'a menti »","« Ta sœur est vivante »"],a:0,f:"La réplique exacte est « Non, je suis ton père » — presque toujours mal citée."},
+{g:'X',y:'1985',q:"Quel plombier moustachu a sauvé une princesse et conquis les salons ?",o:["Mario","Luigi","Sonic","Link"],a:0,f:"À ses débuts en 1981, il s'appelait simplement « Jumpman »."},
+{g:'X',y:'1986',q:"Quel film a donné envie à toute une génération de piloter des avions de chasse ?",o:["Top Gun","Iron Eagle","Firefox","Apocalypse Now"],a:0,f:"Les inscriptions dans l'aéronavale américaine ont bondi après sa sortie."},
+{g:'X',y:'1984',q:"Quel ordinateur d'Apple s'est présenté au monde par une publicité inspirée d'Orwell ?",o:["Le Macintosh","L'Apple II","Le Lisa","L'IBM PC"],a:0,f:"La pub « 1984 » n'est passée qu'une seule fois à la télévision nationale."},
+{g:'X',y:'1990',q:"Quelle série culte commençait par la question « Qui a tué Laura Palmer ? » ?",o:["Twin Peaks","X-Files","Columbo","Dallas"],a:0,f:"David Lynch ne voulait jamais révéler le nom du coupable."},
 
 /* --- Y --- */
-{g:'Y',y:'1997',q:"Quel animal virtuel en porte-clés fallait-il nourrir sous peine de le voir mourir ?",o:["Le Tamagotchi","Le Furby","Le Digimon","Le Nano Pet"],a:0},
-{g:'Y',y:'1996',q:"Quelle console portable à écran vert a déclenché la Pokémania ?",o:["La Game Boy","La Game Gear","La Lynx","La PSP"],a:0},
-{g:'Y',y:'2000',q:"Quel service de partage de fichiers musicaux a été fermé après une série de procès ?",o:["Napster","Spotify","Deezer","Bandcamp"],a:0},
-{g:'Y',y:'2003',q:"Quelle messagerie permettait d'envoyer un « wizz » pour faire trembler l'écran d'un ami ?",o:["MSN Messenger","Skype","ICQ","WhatsApp"],a:0},
-{g:'Y',y:'1998',q:"Quelle série américaine suivait six amis entre un appartement new-yorkais et un café ?",o:["Friends","Seinfeld","Frasier","Will & Grace"],a:0},
-{g:'Y',y:'1999',q:"Quel film posait au héros le choix entre la pilule rouge et la pilule bleue ?",o:["Matrix","Fight Club","eXistenZ","The Truman Show"],a:0},
-{g:'Y',y:'1997',q:"Quel groupe britannique de cinq chanteuses a dominé le milieu des années 90 ?",o:["Les Spice Girls","All Saints","Bananarama","TLC"],a:0},
-{g:'Y',y:'1999',q:"Quel jeu de cartes à collectionner japonais s'échangeait dans toutes les cours de récré ?",o:["Pokémon","Magic","Panini","Yu-Gi-Oh!"],a:0},
-{g:'Y',y:'2000',q:"Quelle console de Sony est devenue la plus vendue de l'histoire ?",o:["La PlayStation 2","La Xbox","La GameCube","La Dreamcast"],a:0},
-{g:'Y',y:'1995',q:"Quel support optique a remplacé la cassette audio dans les salons ?",o:["Le CD","Le MiniDisc","Le DAT","Le vinyle"],a:0},
+{g:'Y',y:'1997',q:"Quel animal virtuel en porte-clés fallait-il nourrir sous peine de le voir mourir ?",o:["Le Tamagotchi","Le Furby","Le Digimon","Le Nano Pet"],a:0,f:"Interdit dans beaucoup d'écoles : il mourait pendant les cours."},
+{g:'Y',y:'1996',q:"Quelle console portable à écran vert a déclenché la Pokémania ?",o:["La Game Boy","La Game Gear","La Lynx","La PSP"],a:0,f:"Un exemplaire a survécu à un bombardement pendant la guerre du Golfe — il fonctionne toujours."},
+{g:'Y',y:'2000',q:"Quel service de partage de fichiers musicaux a été fermé après une série de procès ?",o:["Napster","Spotify","Deezer","Bandcamp"],a:0,f:"80 millions d'utilisateurs en deux ans… puis les avocats de Metallica."},
+{g:'Y',y:'2003',q:"Quelle messagerie permettait d'envoyer un « wizz » pour faire trembler l'écran d'un ami ?",o:["MSN Messenger","Skype","ICQ","WhatsApp"],a:0,f:"Se mettre « Absent » tout en restant devant l'écran, tout un art."},
+{g:'Y',y:'1998',q:"Quelle série américaine suivait six amis entre un appartement new-yorkais et un café ?",o:["Friends","Seinfeld","Frasier","Will & Grace"],a:0,f:"Le canapé orange du Central Perk trônait en réalité dans un studio de Los Angeles."},
+{g:'Y',y:'1999',q:"Quel film posait au héros le choix entre la pilule rouge et la pilule bleue ?",o:["Matrix","Fight Club","eXistenZ","The Truman Show"],a:0,f:"L'effet « bullet time » a demandé plus de cent appareils photo synchronisés."},
+{g:'Y',y:'1997',q:"Quel groupe britannique de cinq chanteuses a dominé le milieu des années 90 ?",o:["Les Spice Girls","All Saints","Bananarama","TLC"],a:0,f:"Le « Girl Power » a écoulé des dizaines de millions de disques en trois ans."},
+{g:'Y',y:'1999',q:"Quel jeu de cartes à collectionner japonais s'échangeait dans toutes les cours de récré ?",o:["Pokémon","Magic","Panini","Yu-Gi-Oh!"],a:0,f:"Un Dracaufeu première édition se revend aujourd'hui à prix d'or."},
+{g:'Y',y:'2000',q:"Quelle console de Sony est devenue la plus vendue de l'histoire ?",o:["La PlayStation 2","La Xbox","La GameCube","La Dreamcast"],a:0,f:"Elle servait aussi de lecteur DVD — argument décisif dans les salons."},
+{g:'Y',y:'1995',q:"Quel support optique a remplacé la cassette audio dans les salons ?",o:["Le CD","Le MiniDisc","Le DAT","Le vinyle"],a:0,f:"Ses 74 minutes auraient été calibrées pour contenir la 9e symphonie de Beethoven."},
+{g:'Y',y:'2001',q:"Quel baladeur d'Apple promettait « 1 000 chansons dans votre poche » ?",o:["L'iPod","Le Zune","Le Discman","Le MiniDisc"],a:0,f:"Sa molette cliquable est devenue une icône du design."},
+{g:'Y',y:'1997',q:"Quel film catastrophe romantique est resté douze ans le plus gros succès du cinéma ?",o:["Titanic","Armageddon","Le Cinquième Élément","Pearl Harbor"],a:0,f:"Céline Dion a d'abord hésité à enregistrer « My Heart Will Go On »."},
+{g:'Y',y:'2004',q:"Quel réseau social, d'abord réservé aux étudiants de Harvard, a conquis le monde ?",o:["Facebook","MySpace","Skyblog","Friendster"],a:0,f:"« The Facebook » a perdu son article en 2005."},
+{g:'Y',y:'1999',q:"Quel « Épisode I » a marqué le retour de Star Wars au cinéma après seize ans ?",o:["La Menace fantôme","L'Attaque des clones","Un nouvel espoir","Le Retour du Jedi"],a:0,f:"Des fans ont campé des semaines entières devant les cinémas."},
+{g:'Y',y:'2002',q:"Quelle plateforme française de blogs a vu fleurir des millions de pages d'ados ?",o:["Skyblog","MySpace","Blogger","Canalblog"],a:0,f:"« Lâche tes coms » est entré dans le langage courant."},
+{g:'Y',y:'1998',q:"Quelle équipe a gagné sa première Coupe du monde de football à domicile ?",o:["La France","Le Brésil","L'Italie","Les Pays-Bas"],a:0,f:"« Et un, et deux, et trois zéro » — un million de personnes sur les Champs-Élysées."},
+{g:'Y',y:'2001',q:"Quelle encyclopédie en ligne écrite par ses propres lecteurs est née en janvier 2001 ?",o:["Wikipédia","Encarta","Universalis","Britannica"],a:0,f:"Son ancêtre Nupedia, réservée aux experts, n'a publié qu'une poignée d'articles."},
+{g:'Y',y:'2005',q:"Quel site de partage de vidéos a débuté avec un clip intitulé « Me at the zoo » ?",o:["YouTube","Dailymotion","Vimeo","Google Video"],a:0,f:"Racheté par Google à peine dix-huit mois après sa création."},
+{g:'Y',y:'1996',q:"Quel jeu vidéo mettait en scène une archéologue nommée Lara Croft ?",o:["Tomb Raider","Uncharted","Indiana Jones","Prince of Persia"],a:0,f:"Lara Croft est née dans un petit studio de six personnes à Derby."},
+{g:'Y',y:'1997',q:"Quel apprenti sorcier à lunettes a fait lire toute une génération ?",o:["Harry Potter","Percy Jackson","Eragon","Artemis Fowl"],a:0,f:"Douze éditeurs ont refusé le manuscrit avant Bloomsbury."},
 
 /* --- Z --- */
-{g:'Z',y:'2010',q:"Quelle application de photos a été lancée avec ses filtres et son format carré ?",o:["Instagram","Snapchat","Flickr","VSCO"],a:0},
-{g:'Z',y:'2012',q:"Quel réseau social envoyait des photos qui disparaissaient après lecture ?",o:["Snapchat","Instagram","BeReal","Tumblr"],a:0},
-{g:'Z',y:'2017',q:"Quelle plateforme de vidéos de six secondes a fermé ses portes ?",o:["Vine","Musical.ly","Triller","Periscope"],a:0},
-{g:'Z',y:'2011',q:"Quel jeu de survie en blocs est devenu le jeu le plus vendu de l'histoire ?",o:["Minecraft","Roblox","Terraria","Fortnite"],a:0},
-{g:'Z',y:'2016',q:"Quel jeu mobile a fait sortir des millions de gens dans la rue pour capturer des créatures ?",o:["Pokémon Go","Ingress","Clash of Clans","Angry Birds"],a:0},
-{g:'Z',y:'2013',q:"Quelle série de HBO sur des royaumes en guerre a dominé la télévision de la décennie ?",o:["Game of Thrones","Vikings","Rome","The Witcher"],a:0},
-{g:'Z',y:'2017',q:"Quel jeu a popularisé le battle royale en y ajoutant la construction ?",o:["Fortnite","PUBG","Apex Legends","Warzone"],a:0},
-{g:'Z',y:'2016',q:"Quel défi viral consistait à rester parfaitement immobile en groupe pendant qu'une caméra circulait ?",o:["Le Mannequin Challenge","Le Harlem Shake","L'Ice Bucket","Le Floss"],a:0},
-{g:'Z',y:'2016',q:"Quel téléphone d'Apple a supprimé la prise casque ?",o:["L'iPhone 7","L'iPhone 6","L'iPhone X","L'iPhone 5"],a:0},
-{g:'Z',y:'2013',q:"Quel service de streaming a lancé sa première série originale, ouvrant l'ère du binge-watching ?",o:["Netflix","Hulu","Amazon Prime","Disney+"],a:0},
+{g:'Z',y:'2010',q:"Quelle application de photos a été lancée avec ses filtres et son format carré ?",o:["Instagram","Snapchat","Flickr","VSCO"],a:0,f:"25 000 téléchargements le premier jour, rachetée un milliard deux ans plus tard."},
+{g:'Z',y:'2012',q:"Quel réseau social envoyait des photos qui disparaissaient après lecture ?",o:["Snapchat","Instagram","BeReal","Tumblr"],a:0,f:"Facebook a proposé trois milliards de dollars en 2013. Refusés."},
+{g:'Z',y:'2017',q:"Quelle plateforme de vidéos de six secondes a fermé ses portes ?",o:["Vine","Musical.ly","Triller","Periscope"],a:0,f:"Six secondes qui ont inventé tout un langage comique."},
+{g:'Z',y:'2011',q:"Quel jeu de survie en blocs est devenu le jeu le plus vendu de l'histoire ?",o:["Minecraft","Roblox","Terraria","Fortnite"],a:0,f:"Plus de 300 millions d'exemplaires, parti d'un développeur seul."},
+{g:'Z',y:'2016',q:"Quel jeu mobile a fait sortir des millions de gens dans la rue pour capturer des créatures ?",o:["Pokémon Go","Ingress","Clash of Clans","Angry Birds"],a:0,f:"500 millions de téléchargements en à peine deux mois."},
+{g:'Z',y:'2013',q:"Quelle série de HBO sur des royaumes en guerre a dominé la télévision de la décennie ?",o:["Game of Thrones","Vikings","Rome","The Witcher"],a:0,f:"Sa saison finale reste l'une des plus regardées — et des plus critiquées."},
+{g:'Z',y:'2017',q:"Quel jeu a popularisé le battle royale en y ajoutant la construction ?",o:["Fortnite","PUBG","Apex Legends","Warzone"],a:0,f:"Le concert virtuel de Travis Scott y a réuni 12 millions de joueurs."},
+{g:'Z',y:'2016',q:"Quel défi viral consistait à rester parfaitement immobile en groupe pendant qu'une caméra circulait ?",o:["Le Mannequin Challenge","Le Harlem Shake","L'Ice Bucket","Le Floss"],a:0,f:"Même l'équipe de la Maison-Blanche s'y est mise."},
+{g:'Z',y:'2016',q:"Quel téléphone d'Apple a supprimé la prise casque ?",o:["L'iPhone 7","L'iPhone 6","L'iPhone X","L'iPhone 5"],a:0,f:"« Courage », a osé Apple pour justifier la disparition de la prise jack."},
+{g:'Z',y:'2013',q:"Quel service de streaming a lancé sa première série originale, ouvrant l'ère du binge-watching ?",o:["Netflix","Hulu","Amazon Prime","Disney+"],a:0,f:"« House of Cards », tous les épisodes d'un coup : le binge-watching devenait la norme."},
+{g:'Z',y:'2014',q:"Quelle messagerie aux deux coches bleues a été rachetée par Facebook ?",o:["WhatsApp","Viber","Telegram","Signal"],a:0,f:"19 milliards de dollars — l'un des plus gros rachats de la tech."},
+{g:'Z',y:'2012',q:"Quel clip sud-coréen a été le premier à dépasser le milliard de vues ?",o:["Gangnam Style","Baby Shark","Despacito","Bad Guy"],a:0,f:"Le compteur de vues de YouTube a dû être réécrit à cause de lui."},
+{g:'Z',y:'2014',q:"Quel défi caritatif consistait à se verser un seau d'eau glacée sur la tête ?",o:["L'Ice Bucket Challenge","Le Mannequin Challenge","Le Cinnamon Challenge","Le 10 Year Challenge"],a:0,f:"Plus de 200 millions de dollars récoltés pour la recherche sur la maladie de Charcot."},
+{g:'Z',y:'2015',q:"Quel engin à deux roues auto-équilibré, sans guidon, a envahi les trottoirs ?",o:["L'hoverboard","La trottinette électrique","Le Segway","Le skate électrique"],a:0,f:"Des modèles bas de gamme prenaient feu — interdits dans plusieurs avions."},
+{g:'Z',y:'2016',q:"Quelle série Netflix avec des enfants à vélo et un monde « à l'envers » est devenue culte ?",o:["Stranger Things","Dark","The OA","Riverdale"],a:0,f:"Un hommage assumé aux années 80 de Spielberg et Stephen King."},
+{g:'Z',y:'2017',q:"Quel gadget qui tourne entre les doigts était censé calmer le stress ?",o:["Le hand spinner","Le Pop it","Le cube antistress","Le slime"],a:0,f:"Inventé des années plus tôt, il a explosé d'un coup au printemps 2017."},
+{g:'Z',y:'2012',q:"Quelle saga dystopique avec Katniss Everdeen a dominé les écrans ?",o:["Hunger Games","Divergente","Le Labyrinthe","Twilight"],a:0,f:"Son salut à trois doigts est devenu un vrai symbole de contestation en Thaïlande."},
+{g:'Z',y:'2011',q:"Quel service suédois de musique en streaming a fait reculer le téléchargement illégal ?",o:["Spotify","iTunes","Pandora","SoundCloud"],a:0,f:"Son pari : rendre la musique légale « plus simple que le piratage »."},
+{g:'Z',y:'2018',q:"Quel vidéaste est devenu la plus grosse chaîne YouTube de France ?",o:["Squeezie","Cyprien","Norman","Rémi Gaillard"],a:0,f:"Son GP Explorer a rempli le circuit du Mans et battu des records sur Twitch."},
+{g:'Z',y:'2016',q:"Quels écouteurs sans fil d'Apple ont d'abord fait rire avant d'être partout ?",o:["Les AirPods","Les EarPods","Les Galaxy Buds","Les Beats"],a:0,f:"Moqués à leur sortie, devenus l'accessoire le plus vendu de la marque."},
 
 /* --- ALPHA --- */
-{g:'ALPHA',y:'2020',q:"Quel jeu en ligne demandait de démasquer un imposteur à bord d'un vaisseau ?",o:["Among Us","Fall Guys","Rocket League","Human Fall Flat"],a:0},
-{g:'ALPHA',y:'2021',q:"Quelle plateforme est devenue la cour de récréation numérique où les enfants créent leurs propres jeux ?",o:["Roblox","Minecraft","Discord","Twitch"],a:0},
-{g:'ALPHA',y:'2022',q:"Quelle application demandait une photo par jour, à un moment tiré au hasard ?",o:["BeReal","Locket","Poparazzi","Dispo"],a:0},
-{g:'ALPHA',y:'2021',q:"Quel jouet en silicone couvert de bulles qu'on pousse a envahi les cours d'école ?",o:["Le Pop it","Le hand spinner","Le slime","Le squishy"],a:0},
-{g:'ALPHA',y:'2021',q:"Quelle plateforme de vidéos verticales a dépassé le milliard d'utilisateurs ?",o:["TikTok","Reels","Shorts","Triller"],a:0},
-{g:'ALPHA',y:'2020',q:"Quel jeu multijoueur éliminait des dizaines de personnages ronds sur des parcours d'obstacles ?",o:["Fall Guys","Among Us","Party Animals","Gang Beasts"],a:0},
-{g:'ALPHA',y:'2022',q:"Quel outil d'intelligence artificielle conversationnelle est devenu grand public en quelques semaines ?",o:["ChatGPT","Siri","Alexa","Cortana"],a:0},
-{g:'ALPHA',y:'2021',q:"Quelles peluches rondes et brillantes à collectionner ont explosé auprès des enfants ?",o:["Les Squishmallows","Les Beanie Babies","Les Furby","Les Sylvanian"],a:0},
-{g:'ALPHA',y:'2023',q:"Quel mot d'argot en ligne désigne le fait d'avoir du charme et de savoir séduire ?",o:["Rizz","Drip","Cap","Mid"],a:0},
-{g:'ALPHA',y:'2020',q:"Quelle console de Nintendo se joue aussi bien sur la télé qu'en portable ?",o:["La Switch","La Wii U","La Steam Deck","La PS Vita"],a:0}
+{g:'ALPHA',y:'2020',q:"Quel jeu en ligne demandait de démasquer un imposteur à bord d'un vaisseau ?",o:["Among Us","Fall Guys","Rocket League","Human Fall Flat"],a:0,f:"Sorti en 2018 dans l'indifférence, star mondiale deux ans plus tard."},
+{g:'ALPHA',y:'2021',q:"Quelle plateforme est devenue la cour de récréation numérique où les enfants créent leurs propres jeux ?",o:["Roblox","Minecraft","Discord","Twitch"],a:0,f:"Une grande partie de ses joueurs a moins de 13 ans."},
+{g:'ALPHA',y:'2022',q:"Quelle application demandait une photo par jour, à un moment tiré au hasard ?",o:["BeReal","Locket","Poparazzi","Dispo"],a:0,f:"Deux minutes pour poster, recto et verso du téléphone à la fois."},
+{g:'ALPHA',y:'2021',q:"Quel jouet en silicone couvert de bulles qu'on pousse a envahi les cours d'école ?",o:["Le Pop it","Le hand spinner","Le slime","Le squishy"],a:0,f:"Imaginé des décennies plus tôt, ressuscité par TikTok."},
+{g:'ALPHA',y:'2021',q:"Quelle plateforme de vidéos verticales a dépassé le milliard d'utilisateurs ?",o:["TikTok","Reels","Shorts","Triller"],a:0,f:"L'application la plus téléchargée au monde plusieurs années de suite."},
+{g:'ALPHA',y:'2020',q:"Quel jeu multijoueur éliminait des dizaines de personnages ronds sur des parcours d'obstacles ?",o:["Fall Guys","Among Us","Party Animals","Gang Beasts"],a:0,f:"Devenu gratuit en 2022, il a gagné 50 millions de joueurs en deux semaines."},
+{g:'ALPHA',y:'2022',q:"Quel outil d'intelligence artificielle conversationnelle est devenu grand public en quelques semaines ?",o:["ChatGPT","Siri","Alexa","Cortana"],a:0,f:"Un million d'utilisateurs en cinq jours — un record à l'époque."},
+{g:'ALPHA',y:'2021',q:"Quelles peluches rondes et brillantes à collectionner ont explosé auprès des enfants ?",o:["Les Squishmallows","Les Beanie Babies","Les Furby","Les Sylvanian"],a:0,f:"Certains collectionneurs en possèdent plusieurs milliers."},
+{g:'ALPHA',y:'2023',q:"Quel mot d'argot en ligne désigne le fait d'avoir du charme et de savoir séduire ?",o:["Rizz","Drip","Cap","Mid"],a:0,f:"Élu mot de l'année 2023 par le dictionnaire Oxford."},
+{g:'ALPHA',y:'2020',q:"Quelle console de Nintendo se joue aussi bien sur la télé qu'en portable ?",o:["La Switch","La Wii U","La Steam Deck","La PS Vita"],a:0,f:"Plus de 140 millions vendues, au niveau des plus grandes de l'histoire."},
+{g:'ALPHA',y:'2023',q:"Quel film tout rose a envahi les cinémas et les dressings ?",o:["Barbie","Wonka","La Petite Sirène","Encanto"],a:0,f:"Sorti le même jour qu'Oppenheimer : le phénomène « Barbenheimer »."},
+{g:'ALPHA',y:'2020',q:"Quelle chanson de bébé requin est devenue la vidéo la plus vue de YouTube ?",o:["Baby Shark","Gangnam Style","Despacito","Let It Go"],a:0,f:"Plus de dix milliards de vues — doo doo doo doo doo doo."},
+{g:'ALPHA',y:'2019',q:"Quel mot désigne les vidéos où l'on ouvre des colis ou des œufs surprise ?",o:["L'unboxing","Le haul","Le vlog","Le speedrun"],a:0,f:"Certaines chaînes d'unboxing pour enfants gagnent des millions par an."},
+{g:'ALPHA',y:'2022',q:"Quelle série Netflix a lancé une danse virale reprise sur du Lady Gaga ?",o:["Mercredi","Stranger Things","Enola Holmes","Outer Banks"],a:0,f:"Jenna Ortega a chorégraphié la danse elle-même."},
+{g:'ALPHA',y:'2023',q:"Quel mot d'argot désigne un garçon solitaire et sûr de lui, façon loup indépendant ?",o:["Sigma","Alpha","Beta","NPC"],a:0,f:"Souvent utilisé avec ironie — personne ne sait plus si c'est un compliment."},
+{g:'ALPHA',y:'2020',q:"Sur quelle plateforme violette regarde-t-on des streamers jouer en direct ?",o:["Twitch","YouTube Live","Kick","Mixer"],a:0,f:"Rachetée par Amazon pour près d'un milliard de dollars dès 2014."},
+{g:'ALPHA',y:'2023',q:"Quelle série de vidéos absurdes avec des têtes qui sortent des toilettes a conquis les cours de récré ?",o:["Skibidi Toilet","Poppy Playtime","Huggy Wuggy","Rainbow Friends"],a:0,f:"Créée sur un logiciel gratuit par un animateur géorgien."},
+{g:'ALPHA',y:'2022',q:"Quelle boisson lancée par deux youtubeurs provoquait des files d'attente devant les supermarchés ?",o:["Prime","Monster","Red Bull","Gatorade"],a:0,f:"Des bouteilles revendues dix fois leur prix dans les cours d'école."},
+{g:'ALPHA',y:'2024',q:"Quel mot désigne le fait de scroller sans fin des contenus abrutissants ?",o:["Le brainrot","Le doomscrolling","Le ghosting","Le flex"],a:0,f:"« Brain rot » a été élu mot de l'année 2024 par Oxford."},
+{g:'ALPHA',y:'2021',q:"Quel film Disney a fait chanter « We Don't Talk About Bruno » partout ?",o:["Encanto","Vaiana","Luca","Raya"],a:0,f:"Premier titre Disney en tête du Billboard depuis « Un monde nouveau » d'Aladdin."}
 ];
 
 /* ================= ÉTAT ================= */
@@ -387,12 +438,25 @@ GENS.forEach(g=>{
   gensEl.appendChild(b);
 });
 
+/* le plateau survit au rechargement de la page */
+function saveRoster(){
+  try{localStorage.setItem('artefact-roster',JSON.stringify(players.map(p=>({name:p.name,gen:p.gen}))))}catch(e){}
+}
+function newPlayer(name,gen){
+  return {name,gen,home:{ok:0,n:0,pts:0},away:{ok:0,n:0,pts:0},total:0};
+}
+try{
+  const saved=JSON.parse(localStorage.getItem('artefact-roster')||'[]');
+  saved.forEach(s=>{if(s.name&&G(s.gen)&&players.length<6)players.push(newPlayer(s.name,s.gen))});
+}catch(e){}
+
 $('#add').onclick=()=>{
   const n=$('#name').value.trim();
   if(!n||!pick||players.length>=6)return;
-  players.push({name:n,gen:pick,home:{ok:0,n:0,pts:0},away:{ok:0,n:0,pts:0},total:0});
+  players.push(newPlayer(n,pick));
   $('#name').value='';pick=null;
   [...gensEl.children].forEach(c=>c.setAttribute('aria-pressed','false'));
+  saveRoster();
   drawRoster();
 };
 $('#name').addEventListener('keydown',e=>{if(e.key==='Enter')$('#add').click()});
@@ -406,7 +470,7 @@ function drawRoster(){
       <span class="g" style="--gcol:${g.col}">${g.short}</span>
       <button class="x" aria-label="Retirer">×</button>`;
     d.querySelector('.who').textContent=p.name;
-    d.querySelector('.x').onclick=()=>{players.splice(i,1);drawRoster()};
+    d.querySelector('.x').onclick=()=>{players.splice(i,1);saveRoster();drawRoster()};
     r.appendChild(d);
   });
   $('#count').textContent=players.length+' / 6';
@@ -417,7 +481,7 @@ drawRoster();
 /* ================= MANCHE ================= */
 $('#start').onclick=()=>{round++;turn=0;startTurn()};
 $('#again').onclick=()=>{round++;turn=0;startTurn()};
-$('#reset').onclick=()=>{players=[];round=0;drawRoster();show('setup')};
+$('#reset').onclick=()=>{players=[];round=0;used.clear();saveRoster();drawRoster();show('setup')};
 
 function buildQueue(p){
   const home=BANK.filter(q=>q.g===p.gen&&!used.has(q.q));
@@ -496,8 +560,11 @@ function answer(ok,btn,order,q,m,home){
   if(home)p.home.pts+=pts;else p.away.pts+=pts;
   p.total+=pts;
 
+  if(navigator.vibrate)navigator.vibrate(ok?25:[55,45,55]);
+
   $('#pts').textContent=(pts>0?'+':'')+pts;
-  $('#msg').textContent=msg;
+  const msgEl=$('#msg');msgEl.textContent=msg;
+  if(q.f){const fx=document.createElement('span');fx.className='fact';fx.textContent=q.f;msgEl.appendChild(fx)}
   $('#verdict').classList.remove('hide');
   $('#next').focus();
 }
@@ -532,10 +599,14 @@ function showScores(){
   });
 
   const w=sorted[0],line=document.createElement('div');line.className='verdict-line';
-  const hp=w.home.n?Math.round(w.home.ok/w.home.n*100):0;
-  const ap=w.away.n?Math.round(w.away.ok/w.away.n*100):0;
-  line.textContent=w.name+' connaît son époque à '+hp+' % et celle des autres à '+ap+' %. '+
-    (ap>=hp?'Plus curieux des autres générations que de la sienne.':'Solide chez soi, perdu ailleurs.');
+  if(sorted.length>1&&sorted[1].total===w.total){
+    line.textContent='Égalité au sommet entre '+w.name+' et '+sorted[1].name+'. Une manche de plus pour les départager ?';
+  }else{
+    const hp=w.home.n?Math.round(w.home.ok/w.home.n*100):0;
+    const ap=w.away.n?Math.round(w.away.ok/w.away.n*100):0;
+    line.textContent=w.name+' connaît son époque à '+hp+' % et celle des autres à '+ap+' %. '+
+      (ap>=hp?'Plus curieux des autres générations que de la sienne.':'Solide chez soi, perdu ailleurs.');
+  }
   board.appendChild(line);
   show('score');
 }
