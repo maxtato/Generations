@@ -29,7 +29,10 @@ réussite de chacun sur son territoire et en terrain adverse.
 
 ## Contenu
 
-- 100 cartes (20 par génération), chacune avec une anecdote « le savais-tu » révélée après la réponse
+- 150 cartes, chacune avec une anecdote « le savais-tu » révélée après la réponse
+- Deux niveaux de difficulté : **Classique** (100 cartes, 20 s par question) et
+  **Expert** (50 cartes nettement plus pointues, 15 s) — choisi sur l'écran de
+  préparation en solo, et par l'hôte dans le salon en ligne
 - 2 à 6 joueurs, manches illimitées, scores cumulés
 - Le plateau de joueurs est sauvegardé localement (localStorage)
 

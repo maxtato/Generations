@@ -84,6 +84,13 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .waiting{text-align:center;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
   color:var(--gold);opacity:.8;padding:12px 0}
 
+/* ============ DIFFICULTÉ ============ */
+.diffrow{display:flex;gap:7px}
+.diff-btn{flex:1;padding:10px 8px;border-radius:10px;background:var(--panel);border:2px solid var(--line);
+  font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);line-height:1.2}
+.diff-btn small{display:block;font-size:8.5px;font-weight:700;opacity:.5;letter-spacing:.06em;text-transform:none;margin-top:3px}
+.diff-btn[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);background:var(--panel2)}
+
 /* ============ SETUP ============ */
 input{width:100%;font-family:inherit;font-size:16px;font-weight:700;padding:13px 14px;
   border:2px solid var(--line);background:var(--panel);color:var(--cream);border-radius:11px}
@@ -224,7 +231,7 @@ input::placeholder{color:var(--cream);opacity:.35}
   <div class="emblem" role="img" aria-label="Générations — le jeu de questions intergénérationnel"></div>
   <div class="fan" id="fan"></div>
   <p class="tag">Chaque carte est un objet d'époque. Sur ta génération, tu es <b>censé savoir</b> — et te tromper coûte cher. Sur celle des autres, chaque bonne réponse vaut double, triple, quadruple.</p>
-  <p class="legend">5 générations · 100 cartes · un seul téléphone<br>2 à 6 joueurs · 5 cartes chacun · 20 secondes par carte</p>
+  <p class="legend">5 générations · 150 cartes · deux niveaux de difficulté<br>en ligne via QR code, ou à plusieurs sur un seul téléphone</p>
   <button class="btn accent" id="bt-host">Créer une partie</button>
   <div class="row2">
     <button class="btn ghost" id="bt-join">Rejoindre</button>
@@ -254,6 +261,10 @@ input::placeholder{color:var(--cream);opacity:.35}
   <div class="roster" id="lobby-list"></div>
   <div class="stack">
     <div class="waiting" id="lobby-wait">En attente de l'hôte…</div>
+    <div class="diffrow" id="lobby-diff">
+      <button class="diff-btn" type="button" data-d="normal">Classique<small>100 cartes · 20 s</small></button>
+      <button class="diff-btn" type="button" data-d="expert">Expert<small>questions pointues · 15 s</small></button>
+    </div>
     <button class="btn accent" id="lobby-start" disabled>Lancer la manche</button>
     <button class="btn ghost" id="lobby-leave">Quitter</button>
   </div>
@@ -266,6 +277,10 @@ input::placeholder{color:var(--cream);opacity:.35}
   <button class="btn ghost" id="add">Ajouter au plateau</button>
   <div class="roster" id="roster"></div>
   <div class="stack">
+    <div class="diffrow">
+      <button class="diff-btn" type="button" data-d="normal">Classique<small>100 cartes · 20 s</small></button>
+      <button class="diff-btn" type="button" data-d="expert">Expert<small>questions pointues · 15 s</small></button>
+    </div>
     <button class="btn accent" id="start" disabled>Distribuer les cartes</button>
     <button class="btn ghost" data-go="title">Retour</button>
   </div>
@@ -2744,13 +2759,86 @@ const BANK=[
 {g:'ALPHA',y:'2023',q:"Quelle série de vidéos absurdes avec des têtes qui sortent des toilettes a conquis les cours de récré ?",o:["Skibidi Toilet","Poppy Playtime","Huggy Wuggy","Rainbow Friends"],a:0,f:"Créée sur un logiciel gratuit par un animateur géorgien."},
 {g:'ALPHA',y:'2022',q:"Quelle boisson lancée par deux youtubeurs provoquait des files d'attente devant les supermarchés ?",o:["Prime","Monster","Red Bull","Gatorade"],a:0,f:"Des bouteilles revendues dix fois leur prix dans les cours d'école."},
 {g:'ALPHA',y:'2024',q:"Quel mot désigne le fait de scroller sans fin des contenus abrutissants ?",o:["Le brainrot","Le doomscrolling","Le ghosting","Le flex"],a:0,f:"« Brain rot » a été élu mot de l'année 2024 par Oxford."},
-{g:'ALPHA',y:'2021',q:"Quel film Disney a fait chanter « We Don't Talk About Bruno » partout ?",o:["Encanto","Vaiana","Luca","Raya"],a:0,f:"Premier titre Disney en tête du Billboard depuis « Un monde nouveau » d'Aladdin."}
+{g:'ALPHA',y:'2021',q:"Quel film Disney a fait chanter « We Don't Talk About Bruno » partout ?",o:["Encanto","Vaiana","Luca","Raya"],a:0,f:"Premier titre Disney en tête du Billboard depuis « Un monde nouveau » d'Aladdin."},
+
+/* ===== NIVEAU EXPERT (d:2) ===== */
+
+/* --- BOOMER expert --- */
+{d:2,g:'BOOMER',y:'1962',q:"Quel satellite a permis la première retransmission télé en direct entre les États-Unis et l'Europe ?",o:["Telstar","Spoutnik 2","Early Bird","Syncom"],a:0,f:"Un instrumental des Tornados baptisé « Telstar » fut numéro un des deux côtés de l'Atlantique."},
+{d:2,g:'BOOMER',y:'1968',q:"Quel athlète a pulvérisé le record du monde de saut en longueur de 55 cm aux JO de Mexico ?",o:["Bob Beamon","Carl Lewis","Ralph Boston","Igor Ter-Ovanesian"],a:0,f:"8,90 m — un record resté intouché pendant 23 ans."},
+{d:2,g:'BOOMER',y:'1955',q:"Quelle voiture française à suspension hydropneumatique a stupéfié le salon de l'auto 1955 ?",o:["La DS","La 403","La Dauphine","La Frégate"],a:0,f:"12 000 commandes dès le premier jour du salon."},
+{d:2,g:'BOOMER',y:'1969',q:"Combien de temps Armstrong et Aldrin ont-ils marché sur la Lune ?",o:["Environ 2 h 30","Environ 8 h","Une journée entière","20 minutes"],a:0,f:"Michael Collins, resté en orbite, n'a jamais posé le pied sur la Lune."},
+{d:2,g:'BOOMER',y:'1971',q:"Quelle monnaie a cessé d'être convertible en or en août 1971 ?",o:["Le dollar américain","La livre sterling","Le franc","Le deutsche mark"],a:0,f:"La fin des accords de Bretton Woods, annoncée un dimanche soir par Nixon."},
+{d:2,g:'BOOMER',y:'1954',q:"Quel écrivain a publié « Bonjour tristesse » à seulement 18 ans ?",o:["Françoise Sagan","Simone de Beauvoir","Marguerite Duras","Albertine Sarrazin"],a:0,f:"Née Françoise Quoirez — son pseudonyme vient d'un personnage de Proust."},
+{d:2,g:'BOOMER',y:'1965',q:"Quel instrument Bob Dylan a-t-il branché au festival de Newport, provoquant un scandale ?",o:["Une guitare électrique","Un orgue Hammond","Un synthétiseur","Une basse"],a:0,f:"Une partie du public folk l'a hué — et un spectateur l'a traité de « Judas » en tournée."},
+{d:2,g:'BOOMER',y:'1969',q:"Quel réseau informatique, ancêtre d'Internet, a transmis son premier message en octobre 1969 ?",o:["ARPANET","Cyclades","Usenet","Bitnet"],a:0,f:"Le premier message, « LOGIN », a fait planter la machine après deux lettres : « LO »."},
+{d:2,g:'BOOMER',y:'1960',q:"Dans quelle ville Abebe Bikila a-t-il gagné le marathon olympique en courant pieds nus ?",o:["Rome","Tokyo","Mexico","Munich"],a:0,f:"L'Éthiopien a récidivé quatre ans plus tard à Tokyo — avec des chaussures."},
+{d:2,g:'BOOMER',y:'1957',q:"Quel être vivant fut le premier mis en orbite autour de la Terre ?",o:["La chienne Laïka","Le singe Albert II","La chatte Félicette","Le chien Strelka"],a:0,f:"La France a bien envoyé une chatte dans l'espace : Félicette, en 1963."},
+
+/* --- X expert --- */
+{d:2,g:'X',y:'1983',q:"Quel jeu vidéo fut un tel fiasco qu'Atari enterra des cartouches dans le désert ?",o:["E.T. l'extraterrestre","Pac-Man","Raiders of the Lost Ark","Asteroids 2"],a:0,f:"La légende fut confirmée en 2014 : les cartouches ont été déterrées au Nouveau-Mexique."},
+{d:2,g:'X',y:'1985',q:"Quel groupe a ouvert le concert Live Aid à Wembley ?",o:["Status Quo","Queen","U2","Dire Straits"],a:0,f:"« Rockin' All Over the World », devant plus d'un milliard de téléspectateurs."},
+{d:2,g:'X',y:'1982',q:"Quel ordinateur familial s'est vendu à plus de 12 millions d'exemplaires, record de l'époque ?",o:["Le Commodore 64","Le ZX81","L'Apple II","L'Amstrad CPC"],a:0,f:"Vendu aussi bien en grande surface qu'en boutique spécialisée."},
+{d:2,g:'X',y:'1988',q:"Quel film d'animation japonais post-apocalyptique a révélé la japanimation adulte en Occident ?",o:["Akira","Ghost in the Shell","Nausicaä","Le Tombeau des lucioles"],a:0,f:"Plus de 160 000 celluloïds peints à la main."},
+{d:2,g:'X',y:'1980',q:"Qui a tiré sur J.R. dans Dallas, mystère qui a tenu le monde en haleine tout un été ?",o:["Kristin Shepard","Sue Ellen","Cliff Barnes","Pamela Ewing"],a:0,f:"L'épisode-réponse reste l'un des plus regardés de l'histoire de la télé américaine."},
+{d:2,g:'X',y:'1987',q:"Quel single de Rick Astley est devenu, des décennies plus tard, l'arme du « rickroll » ?",o:["Never Gonna Give You Up","Together Forever","Take On Me","You Spin Me Round"],a:0,f:"Le clip a été tourné en une seule journée."},
+{d:2,g:'X',y:'1983',q:"Quel téléfilm sur l'apocalypse nucléaire a traumatisé 100 millions d'Américains ?",o:["Le Jour d'après","Threads","War Games","Malevil"],a:0,f:"Reagan écrivit dans son journal en avoir été profondément marqué."},
+{d:2,g:'X',y:'1986',q:"Quelle ville ouvrière, voisine de la centrale de Tchernobyl, fut évacuée en 36 heures ?",o:["Pripiat","Kiev","Gomel","Slavoutytch"],a:0,f:"Sa grande roue, jamais inaugurée, devait ouvrir le 1er mai 1986."},
+{d:2,g:'X',y:'1985',q:"Quelle marque a commis l'erreur marketing du siècle en changeant sa recette ?",o:["Coca-Cola","Pepsi","Fanta","Dr Pepper"],a:0,f:"Le « New Coke » a survécu 79 jours avant le rétropédalage."},
+{d:2,g:'X',y:'1985',q:"Quel pilote français a remporté son premier titre de champion du monde de F1 en 1985 ?",o:["Alain Prost","René Arnoux","Jacques Laffite","Patrick Tambay"],a:0,f:"Quatre titres au total, et une rivalité légendaire avec Ayrton Senna."},
+
+/* --- Y expert --- */
+{d:2,g:'Y',y:'1999',q:"Quelle grande peur informatique a mobilisé des milliards de dollars fin 1999 ?",o:["Le bug de l'an 2000","Le virus ILOVEYOU","Le ver Melissa","Le bug de 2038"],a:0,f:"Presque rien n'a planté — on débat encore : grâce à la préparation, ou malgré elle ?"},
+{d:2,g:'Y',y:'1997',q:"Quel ordinateur d'IBM a battu Garry Kasparov aux échecs ?",o:["Deep Blue","Watson","Deep Thought","AlphaZero"],a:0,f:"Kasparov accusa IBM de tricherie ; la machine fut démontée dans la foulée."},
+{d:2,g:'Y',y:'1996',q:"Quelle brebis est devenue le premier mammifère cloné de l'histoire ?",o:["Dolly","Molly","Polly","Bonnie"],a:0,f:"Nommée d'après Dolly Parton, par des scientifiques taquins."},
+{d:2,g:'Y',y:'2004',q:"Quel navigateur open source issu de Netscape est sorti en version 1.0 en 2004 ?",o:["Firefox","Chrome","Opera","Konqueror"],a:0,f:"Il s'est d'abord appelé Phoenix, puis Firebird, avant Firefox."},
+{d:2,g:'Y',y:'1998',q:"Contre quelle équipe Thuram a-t-il marqué ses deux buts en demi-finale de France 98 ?",o:["La Croatie","L'Italie","Le Paraguay","Les Pays-Bas"],a:0,f:"Les deux seuls buts de Lilian Thuram en 142 sélections."},
+{d:2,g:'Y',y:'2004',q:"Quel jeu en ligne est devenu le MMO le plus joué au monde ?",o:["World of Warcraft","EverQuest","Dofus","RuneScape"],a:0,f:"12 millions d'abonnés au sommet — « Leeroy Jenkins ! »"},
+{d:2,g:'Y',y:'2006',q:"Quel baladeur lancé par Microsoft pour concurrencer l'iPod a fait un flop ?",o:["Le Zune","Le Nomad","Le Sansa","L'Archos"],a:0,f:"Lancé cinq ans après l'iPod, abandonné cinq ans plus tard."},
+{d:2,g:'Y',y:'1997',q:"Quel manga de pirates est devenu la BD la plus vendue de l'histoire ?",o:["One Piece","Naruto","Dragon Ball","Bleach"],a:0,f:"Plus de 500 millions d'exemplaires dans le monde."},
+{d:2,g:'Y',y:'1997',q:"Quelle messagerie française culte des années 2000 avait ses salons de chat par tranches d'âge ?",o:["Caramail","Wanadoo","Voila","MultiMania"],a:0,f:"Rachetée par Lycos, fermée en 2009 — toute une adolescence de pseudos."},
+{d:2,g:'Y',y:'2005',q:"Quel site français de partage vidéo est né à Paris quasi en même temps que YouTube ?",o:["Dailymotion","Wat.tv","Kewego","Vimeo"],a:0,f:"Fondé avec 6 000 € réunis entre amis dans un salon parisien."},
+
+/* --- Z expert --- */
+{d:2,g:'Z',y:'2014',q:"Quel jeu mobile au succès fulgurant fut retiré par son propre créateur, dépassé par l'ampleur ?",o:["Flappy Bird","2048","Doodle Jump","Temple Run"],a:0,f:"Dong Nguyen gagnait 50 000 $ par jour quand il l'a supprimé."},
+{d:2,g:'Z',y:'2014',q:"Quel jeu d'horreur avec des animatroniques dans une pizzeria est devenu culte sur YouTube ?",o:["Five Nights at Freddy's","Bendy and the Ink Machine","Outlast","Hello Neighbor"],a:0,f:"Son créateur avait été moqué pour ses personnages « trop robotiques » — il en a fait un concept."},
+{d:2,g:'Z',y:'2015',q:"Quelle polémique de couleurs de robe a coupé Internet en deux ?",o:["Bleue et noire ou blanche et dorée","Rouge et verte","Rose et grise","Jaune et violette"],a:0,f:"La robe était réellement bleue et noire."},
+{d:2,g:'Z',y:'2018',q:"Quel streamer a joué à Fortnite avec Drake, explosant les records de Twitch ?",o:["Ninja","Shroud","TimTheTatman","Myth"],a:0,f:"628 000 spectateurs simultanés, un record à l'époque."},
+{d:2,g:'Z',y:'2017',q:"Quel mot mystérieux tweeté par Trump à minuit passé est devenu un mème mondial ?",o:["Covfefe","Bigly","Hamberders","Smocking"],a:0,f:"Le tweet est resté six heures en ligne ; personne ne sait toujours ce qu'il voulait dire."},
+{d:2,g:'Z',y:'2014',q:"Combien Microsoft a-t-il payé pour racheter Mojang, le studio de Minecraft ?",o:["2,5 milliards $","500 millions $","8 milliards $","900 millions $"],a:0,f:"Notch, le créateur, a tout vendu et quitté le studio le jour même."},
+{d:2,g:'Z',y:'2016',q:"Quelle IA de Google a battu le champion Lee Sedol au jeu de go ?",o:["AlphaGo","DeepMind Zero","Watson","Stockfish"],a:0,f:"Son « coup 37 » de la deuxième partie est entré dans l'histoire de l'IA."},
+{d:2,g:'Z',y:'2013',q:"Quel lanceur d'alerte a révélé la surveillance de masse de la NSA ?",o:["Edward Snowden","Julian Assange","Chelsea Manning","Aaron Swartz"],a:0,f:"Réfugié en Russie, il en a obtenu la nationalité en 2022."},
+{d:2,g:'Z',y:'2019',q:"Sur quel voilier Greta Thunberg a-t-elle traversé l'Atlantique pour éviter l'avion ?",o:["Malizia II","Energy Observer","Tara","Pen Duick VI"],a:0,f:"Un monocoque de course prêté par Pierre Casiraghi, skippé par Boris Herrmann."},
+{d:2,g:'Z',y:'2020',q:"Quel documentaire Netflix sur un éleveur de fauves a marqué le premier confinement ?",o:["Tiger King","Making a Murderer","Wild Wild Country","Don't F**k with Cats"],a:0,f:"Joe Exotic purge 21 ans de prison — pour avoir commandité un meurtre, entre autres."},
+
+/* --- ALPHA expert --- */
+{d:2,g:'ALPHA',y:'2021',q:"Comment s'appelle la monnaie virtuelle de Roblox ?",o:["Les Robux","Les V-Bucks","Les Gems","Les Minecoins"],a:0,f:"Les V-Bucks, eux, sont la monnaie de Fortnite — piège classique."},
+{d:2,g:'ALPHA',y:'2021',q:"Quel jeu d'horreur met en scène une poupée bleue à grandes dents nommée Huggy Wuggy ?",o:["Poppy Playtime","Garten of Banban","Rainbow Friends","Bendy"],a:0,f:"Créé par un petit studio américain, MOB Entertainment."},
+{d:2,g:'ALPHA',y:'2023',q:"Comment s'appelle la coupe de cheveux « en brocoli » des collégiens ?",o:["Le broccoli cut","Le wolf cut","Le buzz cut","La mulet"],a:0,f:"Aussi surnommée « zoomer perm » — l'Edgar est son cousin à frange droite."},
+{d:2,g:'ALPHA',y:'2021',q:"Quel youtubeur a recréé Squid Game en vrai avec 456 000 $ à la clé ?",o:["MrBeast","Logan Paul","Dream","Airrack"],a:0,f:"La vidéo a coûté 3,5 millions de dollars à produire."},
+{d:2,g:'ALPHA',y:'2021',q:"Quel biome Minecraft est arrivé avec la mise à jour « Caves & Cliffs » ?",o:["Les grottes luxuriantes","La mangrove","Le désert des âmes","Les pics de cerisiers"],a:0,f:"La mangrove, elle, est arrivée avec « The Wild Update » en 2022."},
+{d:2,g:'ALPHA',y:'2022',q:"Quel amphibien mexicain au sourire permanent est devenu la star des peluches et de Minecraft ?",o:["L'axolotl","La salamandre tigrée","Le triton crêté","La rainette"],a:0,f:"Capable de régénérer ses membres, il est en danger critique dans la nature."},
+{d:2,g:'ALPHA',y:'2023',q:"Que signifie « NPC » quand les ados l'utilisent comme pique ?",o:["Personnage non joueur","Nouveau profil connecté","No Panic Crew","Non Playable Champion"],a:0,f:"Les streams « NPC », où l'on répète des gestes contre des cadeaux, ont rapporté des fortunes."},
+{d:2,g:'ALPHA',y:'2024',q:"Quel mot désigne le charisme silencieux, qu'on gagne ou perd « en points » ?",o:["L'aura","Le rizz","Le drip","Le flow"],a:0,f:"Une honte publique peut coûter « −1000 aura » au tribunal invisible de la récré."},
+{d:2,g:'ALPHA',y:'2018',q:"Dans Fortnite, comment s'appelle le véhicule qui largue les joueurs sur l'île ?",o:["Le bus de combat","Le char royal","L'aérobus","Le planeur géant"],a:0,f:"Remercier le chauffeur du bus est devenu un réflexe mondial."},
+{d:2,g:'ALPHA',y:'2013',q:"Quel jeu rythmique où un cube saute au rythme de la musique reste culte dans les cours de récré ?",o:["Geometry Dash","Subway Surfers","Stack","Crossy Road"],a:0,f:"Ses niveaux « démons extrêmes » demandent parfois des années d'entraînement."}
 ];
 
 /* ================= ÉTAT ================= */
 const $=s=>document.querySelector(s);
 let players=[],pick=null,round=0;
 let turn=0,qIdx=0,queue=[],used=new Set(),timer=null,left=0,locked=false;
+
+/* difficulté : 'normal' (d1, 20 s) ou 'expert' (d2, 15 s) */
+let diff='normal';
+try{if(localStorage.getItem('gens-diff')==='expert')diff='expert'}catch(e){}
+const inDiff=q=>(q.d||1)===(diff==='expert'?2:1);
+const diffSecs=()=>diff==='expert'?15:20;
+function setDiff(d){
+  diff=d;
+  try{localStorage.setItem('gens-diff',d)}catch(e){}
+  document.querySelectorAll('.diff-btn').forEach(b=>b.setAttribute('aria-pressed',b.dataset.d===d?'true':'false'));
+}
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const show=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$('#s-'+id).classList.add('on')};
 document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go));
@@ -2831,8 +2919,8 @@ $('#reset').onclick=()=>{
 };
 
 function buildQueue(p){
-  const home=BANK.filter(q=>q.g===p.gen&&!used.has(q.q));
-  const away=BANK.filter(q=>q.g!==p.gen&&!used.has(q.q));
+  const home=BANK.filter(q=>inDiff(q)&&q.g===p.gen&&!used.has(q.q));
+  const away=BANK.filter(q=>inDiff(q)&&q.g!==p.gen&&!used.has(q.q));
   const pool=[...shuffle(home).slice(0,2),...shuffle(away).slice(0,3)];
   if(pool.length<5){used.clear();return buildQueue(p)}
   pool.forEach(q=>used.add(q.q));
@@ -2878,9 +2966,10 @@ function render(){
   $('#vtap').textContent='Touche la carte pour continuer';
   $('#verdict').classList.add('hide');
 
-  left=20;$('#tbar').style.width='100%';
+  const secs=diffSecs();
+  left=secs;$('#tbar').style.width='100%';
   timer=setInterval(()=>{
-    left--;$('#tbar').style.width=Math.max(0,left/20*100)+'%';
+    left--;$('#tbar').style.width=Math.max(0,left/secs*100)+'%';
     if(left<=0)answer(false,null,order,q,m,home);
   },1000);
 }
@@ -3037,7 +3126,9 @@ $('#ident-go').onclick=()=>{
 function renderLobby(list){
   const isHost=net.role==='host';
   const players=list||net.seat.filter(s=>!s.left).map(s=>({name:s.name,gen:s.gen}));
-  $('#room-code').textContent='Code '+net.code;
+  const d=isHost?diff:(net.ldiff||'normal');
+  $('#room-code').textContent='Code '+net.code+(d==='expert'?' · Expert':'');
+  $('#lobby-diff').style.display=isHost?'':'none';
   $('#qrwrap').style.display=isHost?'':'none';
   if(isHost){
     const url=roomURL(net.code);
@@ -3086,7 +3177,7 @@ function hostGame(me,attempt){
   });
 }
 function hostBroadcast(m){net.seat.forEach(s=>{if(s.conn&&!s.left){try{s.conn.send(m)}catch(e){}}})}
-function lobbyMsg(){return{t:'lobby',code:net.code,players:net.seat.filter(s=>!s.left).map(s=>({name:s.name,gen:s.gen}))}}
+function lobbyMsg(){return{t:'lobby',code:net.code,diff,players:net.seat.filter(s=>!s.left).map(s=>({name:s.name,gen:s.gen}))}}
 
 function hostOnData(c,d){
   if(!net||net.role!=='host'||!d)return;
@@ -3110,10 +3201,10 @@ function hostOnData(c,d){
 function buildShared(){
   const qs=[];
   for(const g of GENS){
-    let pool=BANK.filter(q=>q.g===g.id&&!used.has(q.q));
+    let pool=BANK.filter(q=>inDiff(q)&&q.g===g.id&&!used.has(q.q));
     if(pool.length<2){
-      BANK.filter(q=>q.g===g.id).forEach(q=>used.delete(q.q));
-      pool=BANK.filter(q=>q.g===g.id&&!used.has(q.q));
+      BANK.filter(q=>inDiff(q)&&q.g===g.id).forEach(q=>used.delete(q.q));
+      pool=BANK.filter(q=>inDiff(q)&&q.g===g.id&&!used.has(q.q));
     }
     qs.push(...shuffle(pool).slice(0,2));
   }
@@ -3133,7 +3224,7 @@ function hostNextQ(){
   const q=net.qs[net.qi];
   net.order=shuffle(q.o.map((t,i)=>({t,i})));
   net.answers={};net.phase='q';
-  const msg={t:'q',round:net.round,qi:net.qi,total:net.qs.length,g:q.g,y:q.y,q:q.q,o:net.order.map(o=>o.t),secs:20};
+  const msg={t:'q',round:net.round,qi:net.qi,total:net.qs.length,g:q.g,y:q.y,q:q.q,o:net.order.map(o=>o.t),secs:diffSecs()};
   hostBroadcast(msg);
   netShowQuestion(msg,k=>{
     if(net.phase==='q'&&!(net.me.name in net.answers)){net.answers[net.me.name]=k;maybeReveal()}
@@ -3187,7 +3278,7 @@ function joinGame(code,me){
 function guestOnData(d){
   if(!net||!d)return;
   if(d.t==='welcome'){net.me.name=d.name;net.code=d.code}
-  if(d.t==='lobby'){net.lobby=d.players;if(net.phase==='lobby')renderLobby(d.players)}
+  if(d.t==='lobby'){net.lobby=d.players;net.ldiff=d.diff;if(net.phase==='lobby')renderLobby(d.players)}
   if(d.t==='wait'){net.spect=true;net.phase='lobby';renderLobby(net.lobby||[]);$('#lobby-wait').textContent='Manche en cours — tu entreras à la prochaine.'}
   if(net.spect&&(d.t==='q'||d.t==='r'))return;
   if(d.t==='q'){net.phase='q';netShowQuestion(d,k=>{try{net.conn.send({t:'answer',qi:d.qi,k})}catch(e){}})}
@@ -3263,6 +3354,13 @@ function netShowScores(list,roundNo){
   $('#again').style.display=isHost?'':'none';
   $('#score-wait').style.display=isHost?'none':'';
 }
+
+/* sélecteurs de difficulté (setup solo + salon hôte) */
+document.querySelectorAll('.diff-btn').forEach(b=>b.onclick=()=>{
+  setDiff(b.dataset.d);
+  if(net&&net.role==='host'&&net.phase==='lobby'){hostBroadcast(lobbyMsg());renderLobby()}
+});
+setDiff(diff);
 
 /* arrivée par QR : ?room=CODE */
 const ROOM=new URLSearchParams(location.search).get('room');
